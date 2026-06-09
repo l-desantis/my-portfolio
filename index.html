@@ -1,583 +1,1139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lorenzo De Santis | Senior Software Engineer</title>
-    <meta name="description" content="Portfolio of Lorenzo De Santis, Senior Software Engineer and Tech Lead specializing in High-Performance Backend Systems and Azure Cloud Architecture.">
-    
-    <!-- Fonts: Inter for a clean, modern look -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons: FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lorenzo De Santis | Senior Software Engineer</title>
+        <meta
+            name="description"
+            content="Portfolio of Lorenzo De Santis, Senior Software Engineer and Tech Lead specializing in High-Performance Backend Systems and Azure Cloud Architecture."
+        />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Fonts: JetBrains Mono (chrome) + Inter (body) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
 
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            DEFAULT: '#1C033C', // Dark purple from resume
-                            light: '#371e77',   // Lighter purple from resume
-                            accent: '#4B28A4',  // Bright accent
+        <!-- Icons: FontAwesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- Tailwind Configuration -->
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ["Inter", "sans-serif"],
+                            mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
                         },
-                        neutral: {
-                            50: '#f9fafb',
-                            100: '#f3f4f6',
-                            200: '#e5e7eb',
-                            300: '#d1d5db',
-                            400: '#9ca3af',
-                            500: '#6b7280',
-                            600: '#4b5563',
-                            700: '#374151',
-                            800: '#1f2937',
-                            900: '#111827',
-                        }
-                    }
+                        colors: {
+                            term: {
+                                bg: "#0d1117", // page background
+                                panel: "#161b22", // cards / inputs
+                                border: "#30363d", // borders / rules
+                                text: "#c9d1d9", // body text
+                                muted: "#8b949e", // secondary text
+                                green: "#3fb950", // primary accent / prompt
+                                blue: "#58a6ff", // links
+                                amber: "#d29922", // secondary accent
+                            },
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+            }
+            .font-mono {
+                font-family: "JetBrains Mono", ui-monospace, monospace;
+            }
+
+            /* The ONLY animation we keep: a blinking terminal cursor */
+            .cursor::after {
+                content: "_";
+                margin-left: 2px;
+                color: #3fb950;
+                animation: blink 1.1s steps(2, start) infinite;
+            }
+            @keyframes blink {
+                to {
+                    visibility: hidden;
                 }
             }
-        }
-    </script>
 
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+            #mobile-menu {
+                transition:
+                    max-height 0.3s ease-in-out,
+                    opacity 0.3s ease-in-out;
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+            }
 
-        #mobile-menu {
-            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-        }
-        
-        #mobile-menu.open {
-            max-height: 400px;
-            opacity: 1;
-        }
-        
-        /* Avatar floating animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .avatar-float {
-            animation: float 6s ease-in-out infinite;
-        }
-    </style>
-</head>
-<body class="bg-neutral-50 text-neutral-800 antialiased selection:bg-primary-light selection:text-white">
-
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-neutral-50/90 backdrop-blur-sm border-b border-neutral-200 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="text-xl font-bold tracking-tight text-primary hover:text-primary-light transition">
-                        LDS<span class="text-primary-accent">.</span>
-                    </a>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-sm font-medium text-neutral-600 hover:text-primary transition">Home</a>
-                    <a href="#about" class="text-sm font-medium text-neutral-600 hover:text-primary transition">About</a>
-                    <a href="#experience" class="text-sm font-medium text-neutral-600 hover:text-primary transition">Experience</a>
-                    <a href="#projects" class="text-sm font-medium text-neutral-600 hover:text-primary transition">Projects</a>
-                    <a href="#contact" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-light transition shadow-sm">Contact</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-neutral-600 hover:text-primary focus:outline-none p-2">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="md:hidden bg-white border-b border-neutral-200">
-            <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
-                <a href="#home" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-primary hover:bg-neutral-100">Home</a>
-                <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-primary hover:bg-neutral-100">About</a>
-                <a href="#experience" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-primary hover:bg-neutral-100">Experience</a>
-                <a href="#projects" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-primary hover:bg-neutral-100">Projects</a>
-                <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-primary hover:bg-neutral-100">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
-        <!-- Background decoration -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary-light/5 rounded-full blur-3xl"></div>
-        
-        <!-- Container set to flex row on desktop (md), column on mobile -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16 fade-in relative z-10">
-            
-            <!-- Avatar / Image (Left Side on Desktop) -->
-            <div class="flex-shrink-0 avatar-float md:w-1/2 flex justify-center md:justify-end">
-                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden border-[6px] border-white shadow-2xl ring-1 ring-neutral-200">
-                     <!-- Using the exact filename you provided -->
-                     <img src="avatar.png" alt="Lorenzo De Santis" class="object-cover w-full h-full transform hover:scale-105 transition duration-700 ease-in-out">
-                </div>
-            </div>
-
-            <!-- Text Content (Right Side on Desktop) -->
-            <div class="text-center md:text-left md:w-1/2">
-                <!-- Badge -->
-                <span class="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-primary uppercase bg-primary/10 rounded-full">Senior Software Engineer</span>
-                
-                <h1 class="text-5xl md:text-7xl font-bold text-neutral-900 tracking-tight mb-6">
-                    Lorenzo <br class="hidden md:block" /> De Santis
-                </h1>
-                
-                <p class="mt-4 text-xl text-neutral-500 max-w-lg mx-auto md:mx-0 mb-8 leading-relaxed">
-                    Architecting High-Performance Backend Systems and Scalable Cloud Solutions (Azure). Hands-on Technical Leader for critical migrations.
-                </p>
-                
-                <!-- Social Icons -->
-                <div class="flex justify-center md:justify-start gap-6 mb-10">
-                    <a href="https://github.com/whoami-Lory271" target="_blank" class="text-neutral-500 hover:text-primary transition text-2xl hover:-translate-y-1 transform duration-300"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/desantis-lorenzo" target="_blank" class="text-neutral-500 hover:text-primary transition text-2xl hover:-translate-y-1 transform duration-300"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:desantis.lorenzo.271@gmail.com" class="text-neutral-500 hover:text-primary transition text-2xl hover:-translate-y-1 transform duration-300"><i class="fas fa-envelope"></i></a>
-                </div>
-
-                <!-- Buttons -->
-                <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                    <a href="#experience" class="px-8 py-3 text-base font-medium text-white bg-primary rounded-md hover:bg-primary-light transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        View Experience
-                    </a>
-                    <a href="#contact" class="px-8 py-3 text-base font-medium text-primary-light bg-white border border-neutral-300 rounded-md hover:bg-neutral-50 transition shadow-sm hover:shadow-md">
-                        Contact Me
-                    </a>
-                </div>
-            </div>
-            
-        </div>
-        
-        <!-- Scroll indicator remains centered at the bottom -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-neutral-400">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-white border-t border-neutral-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-start">
-                
-                <!-- Skills & Tech Stack -->
-                <div class="fade-in mb-12 lg:mb-0 order-2 lg:order-1">
-                    <h3 class="text-2xl font-bold text-neutral-900 mb-6">Technical Proficiency</h3>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <h4 class="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-3">Languages & Backend</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded text-sm">Java</span>
-                                <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded text-sm">Spring Boot</span>
-                                <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded text-sm">Python</span>
-                                <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded text-sm">SQL</span>
-                                <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded text-sm">PostgreSQL</span>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <h4 class="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-3">Cloud & DevOps</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded text-sm font-medium">Azure AKS</span>
-                                <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded text-sm font-medium">Kubernetes</span>
-                                <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded text-sm font-medium">Docker</span>
-                                <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded text-sm font-medium">CI/CD</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h4 class="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-3">Soft Skills</h4>
-                            <ul class="space-y-2 text-sm text-neutral-600">
-                                <li class="flex items-start gap-2">
-                                    <i class="fas fa-check-circle text-primary mt-1"></i>
-                                    <span>Technical Leadership</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i class="fas fa-check-circle text-primary mt-1"></i>
-                                    <span>High-Stakes Architecture</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i class="fas fa-check-circle text-primary mt-1"></i>
-                                    <span>Global Collaboration</span>
-                                </li>
-                            </ul>
-                        </div>
+            #mobile-menu.open {
+                max-height: 420px;
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-term-bg text-term-text antialiased selection:bg-term-green selection:text-term-bg"
+    >
+        <!-- Navigation -->
+        <nav
+            class="fixed w-full z-50 bg-neutral-50/90 backdrop-blur-sm border-b border-neutral-200 transition-all duration-300"
+            id="navbar"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center">
+                        <a
+                            href="#"
+                            class="text-xl font-bold tracking-tight text-primary hover:text-primary-light transition"
+                        >
+                            LDS<span class="text-primary-accent">.</span>
+                        </a>
                     </div>
-                </div>
 
-                <!-- Bio -->
-                <div class="fade-in delay-100 order-1 lg:order-2">
-                    <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-3">About Me</h2>
-                    <h3 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">Code-first engineering with strategic leadership.</h3>
-                    <p class="text-lg text-neutral-600 mb-6 leading-relaxed">
-                        I am a Senior Software Engineer and Technical Lead based in Rome, with a Master's in Computer Science Engineering (110 cum laude). My expertise lies in architecting and implementing scalable, fault-tolerant distributed systems.
-                    </p>
-                    <p class="text-lg text-neutral-600 mb-6 leading-relaxed">
-                        Currently, I am driving a critical international <strong>on-prem to Azure Cloud migration</strong>. My role involves deep technical work—designing Kubernetes clusters and optimizing backend performance for <strong>high concurrency</strong>—while leading a 10-person engineering team to ensure successful delivery for international stakeholders.
-                    </p>
-                    <div class="p-6 bg-neutral-50 rounded-xl border border-neutral-100">
-                        <div class="flex items-center gap-4 mb-2">
-                            <i class="fas fa-language text-2xl text-primary-light"></i>
-                            <h4 class="font-bold text-neutral-900">Languages</h4>
-                        </div>
-                        <p class="text-neutral-600">Italian (Native), English (C1)</p>
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex space-x-8 items-center">
+                        <a
+                            href="#home"
+                            class="text-sm font-medium text-neutral-600 hover:text-primary transition"
+                            >Home</a
+                        >
+                        <a
+                            href="#about"
+                            class="text-sm font-medium text-neutral-600 hover:text-primary transition"
+                            >About</a
+                        >
+                        <a
+                            href="#experience"
+                            class="text-sm font-medium text-neutral-600 hover:text-primary transition"
+                            >Experience</a
+                        >
+                        <a
+                            href="#projects"
+                            class="text-sm font-medium text-neutral-600 hover:text-primary transition"
+                            >Projects</a
+                        >
+                        <a
+                            href="#contact"
+                            class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-light transition shadow-sm"
+                            >Contact</a
+                        >
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden flex items-center">
+                        <button
+                            id="mobile-menu-btn"
+                            class="text-neutral-600 hover:text-primary focus:outline-none p-2"
+                        >
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Experience & Education Section -->
-    <section id="experience" class="py-24 bg-neutral-50">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-3">Resume</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-neutral-900">Experience & Education</h3>
+            <!-- Mobile Menu Panel -->
+            <div
+                id="mobile-menu"
+                class="md:hidden bg-white border-b border-neutral-200"
+            >
+                <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
+                    <a
+                        href="#home"
+                        class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-primary hover:bg-neutral-100"
+                        >Home</a
+                    >
+                    <a
+                        href="#about"
+                        class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-primary hover:bg-neutral-100"
+                        >About</a
+                    >
+                    <a
+                        href="#experience"
+                        class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-primary hover:bg-neutral-100"
+                        >Experience</a
+                    >
+                    <a
+                        href="#projects"
+                        class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-primary hover:bg-neutral-100"
+                        >Projects</a
+                    >
+                    <a
+                        href="#contact"
+                        class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-primary hover:bg-neutral-100"
+                        >Contact</a
+                    >
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section
+            id="home"
+            class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden"
+        >
+            <!-- Background decoration -->
+            <div
+                class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary-light/5 rounded-full blur-3xl"
+            ></div>
+
+            <!-- Container set to flex row on desktop (md), column on mobile -->
+            <div
+                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16 fade-in relative z-10"
+            >
+                <!-- Avatar / Image (Left Side on Desktop) -->
+                <div
+                    class="flex-shrink-0 avatar-float md:w-1/2 flex justify-center md:justify-end"
+                >
+                    <div
+                        class="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden border-[6px] border-white shadow-2xl ring-1 ring-neutral-200"
+                    >
+                        <!-- Using the exact filename you provided -->
+                        <img
+                            src="avatar.png"
+                            alt="Lorenzo De Santis"
+                            class="object-cover w-full h-full transform hover:scale-105 transition duration-700 ease-in-out"
+                        />
+                    </div>
+                </div>
+
+                <!-- Text Content (Right Side on Desktop) -->
+                <div class="text-center md:text-left md:w-1/2">
+                    <!-- Badge -->
+                    <span
+                        class="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-primary uppercase bg-primary/10 rounded-full"
+                        >Senior Software Engineer</span
+                    >
+
+                    <h1
+                        class="text-5xl md:text-7xl font-bold text-neutral-900 tracking-tight mb-6"
+                    >
+                        Lorenzo <br class="hidden md:block" />
+                        De Santis
+                    </h1>
+
+                    <p
+                        class="mt-4 text-xl text-neutral-500 max-w-lg mx-auto md:mx-0 mb-8 leading-relaxed"
+                    >
+                        Architecting High-Performance Backend Systems and
+                        Scalable Cloud Solutions (Azure). Hands-on Technical
+                        Leader for critical migrations.
+                    </p>
+
+                    <!-- Social Icons -->
+                    <div
+                        class="flex justify-center md:justify-start gap-6 mb-10"
+                    >
+                        <a
+                            href="https://github.com/whoami-Lory271"
+                            target="_blank"
+                            class="text-neutral-500 hover:text-primary transition text-2xl hover:-translate-y-1 transform duration-300"
+                            ><i class="fab fa-github"></i
+                        ></a>
+                        <a
+                            href="https://www.linkedin.com/in/desantis-lorenzo"
+                            target="_blank"
+                            class="text-neutral-500 hover:text-primary transition text-2xl hover:-translate-y-1 transform duration-300"
+                            ><i class="fab fa-linkedin"></i
+                        ></a>
+                        <a
+                            href="mailto:desantis.lorenzo.271@gmail.com"
+                            class="text-neutral-500 hover:text-primary transition text-2xl hover:-translate-y-1 transform duration-300"
+                            ><i class="fas fa-envelope"></i
+                        ></a>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div
+                        class="flex flex-col sm:flex-row justify-center md:justify-start gap-4"
+                    >
+                        <a
+                            href="#experience"
+                            class="px-8 py-3 text-base font-medium text-white bg-primary rounded-md hover:bg-primary-light transition shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                        >
+                            View Experience
+                        </a>
+                        <a
+                            href="#contact"
+                            class="px-8 py-3 text-base font-medium text-primary-light bg-white border border-neutral-300 rounded-md hover:bg-neutral-50 transition shadow-sm hover:shadow-md"
+                        >
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Work Experience -->
-                <div class="fade-in">
-                    <h4 class="text-xl font-bold text-neutral-900 mb-8 flex items-center gap-3">
-                        <span class="w-8 h-8 rounded bg-primary/10 text-primary flex items-center justify-center"><i class="fas fa-briefcase text-sm"></i></span>
-                        Professional Experience
-                    </h4>
-                    
-                    <div class="space-y-8 border-l-2 border-neutral-200 pl-8 ml-4 relative">
-                        <!-- Job 1 -->
-                        <div class="relative">
-                            <span class="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-primary"></span>
-                            <h5 class="text-lg font-bold text-neutral-900">Senior Software Engineer & Team Lead</h5>
-                            <p class="text-primary-light font-medium mb-1">Ringmaster S.r.l</p>
-                            <p class="text-sm text-neutral-400 mb-3">Jun 2022 - Present | Rome (International Project)</p>
-                            <div class="text-neutral-600 text-sm leading-relaxed mb-4 space-y-3">
-                                <p>
-                                    <strong>On-Prem to Azure Migration (International Client):</strong> Leading a <strong>10-person engineering team</strong> through a complex cloud migration. Responsible for the full architectural lifecycle, utilizing Spring Boot and Kubernetes (AKS).
-                                </p>
-                                <ul class="list-disc pl-4 space-y-1">
-                                    <li>Designed and implemented high-concurrency systems handling multiple customer integrations.</li>
-                                    <li>Achieved <strong>zero downtime</strong> during critical migration phases.</li>
-                                    <li>Optimized Middleware Gambling applications for cloud-native performance.</li>
+            <!-- Scroll indicator remains centered at the bottom -->
+            <div
+                class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-neutral-400"
+            >
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 bg-white border-t border-neutral-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-start">
+                    <!-- Skills & Tech Stack -->
+                    <div class="fade-in mb-12 lg:mb-0 order-2 lg:order-1">
+                        <h3 class="text-2xl font-bold text-neutral-900 mb-6">
+                            Technical Proficiency
+                        </h3>
+
+                        <div class="space-y-6">
+                            <div>
+                                <h4
+                                    class="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-3"
+                                >
+                                    Languages & Backend
+                                </h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded text-sm"
+                                        >Java</span
+                                    >
+                                    <span
+                                        class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded text-sm"
+                                        >Spring Boot</span
+                                    >
+                                    <span
+                                        class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded text-sm"
+                                        >Python</span
+                                    >
+                                    <span
+                                        class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded text-sm"
+                                        >SQL</span
+                                    >
+                                    <span
+                                        class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded text-sm"
+                                        >PostgreSQL</span
+                                    >
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4
+                                    class="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-3"
+                                >
+                                    Cloud & DevOps
+                                </h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="px-3 py-1 bg-blue-50 text-blue-700 rounded text-sm font-medium"
+                                        >Azure AKS</span
+                                    >
+                                    <span
+                                        class="px-3 py-1 bg-blue-50 text-blue-700 rounded text-sm font-medium"
+                                        >Kubernetes</span
+                                    >
+                                    <span
+                                        class="px-3 py-1 bg-blue-50 text-blue-700 rounded text-sm font-medium"
+                                        >Docker</span
+                                    >
+                                    <span
+                                        class="px-3 py-1 bg-blue-50 text-blue-700 rounded text-sm font-medium"
+                                        >CI/CD</span
+                                    >
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4
+                                    class="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-3"
+                                >
+                                    Soft Skills
+                                </h4>
+                                <ul class="space-y-2 text-sm text-neutral-600">
+                                    <li class="flex items-start gap-2">
+                                        <i
+                                            class="fas fa-check-circle text-primary mt-1"
+                                        ></i>
+                                        <span>Technical Leadership</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i
+                                            class="fas fa-check-circle text-primary mt-1"
+                                        ></i>
+                                        <span>High-Stakes Architecture</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i
+                                            class="fas fa-check-circle text-primary mt-1"
+                                        ></i>
+                                        <span>Global Collaboration</span>
+                                    </li>
                                 </ul>
                             </div>
-                            <div class="flex flex-wrap gap-2 mt-2">
-                                <span class="text-xs bg-primary text-white px-2 py-1 rounded">Azure AKS</span>
-                                <span class="text-xs bg-white border border-neutral-200 px-2 py-1 rounded text-neutral-500">Spring Boot</span>
-                                <span class="text-xs bg-white border border-neutral-200 px-2 py-1 rounded text-neutral-500">High Concurrency</span>
-                            </div>
-                        </div>
-
-                        <!-- Job 2 -->
-                        <div class="relative">
-                            <span class="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-neutral-300"></span>
-                            <h5 class="text-lg font-bold text-neutral-900">Software Engineer Intern</h5>
-                            <p class="text-primary-light font-medium mb-1">Bytewise S.r.l</p>
-                            <p class="text-sm text-neutral-400 mb-3">Jun 2021 - Nov 2021 | Rome</p>
-                            <p class="text-neutral-600 text-sm leading-relaxed">
-                                Development of web applications using Express.js. Study of JavaScript, Node.js, and React basics. Linux server interaction.
-                            </p>
-                        </div>
-
-                         <!-- Job 3 -->
-                         <div class="relative">
-                            <span class="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-neutral-300"></span>
-                            <h5 class="text-lg font-bold text-neutral-900">Basics Linux Course</h5>
-                            <p class="text-primary-light font-medium mb-1">LUG Sapienza</p>
-                            <p class="text-sm text-neutral-400 mb-3">Oct 2018 - Nov 2018</p>
-                            <p class="text-neutral-600 text-sm leading-relaxed">
-                                Bash, Linux, VMware.
-                            </p>
                         </div>
                     </div>
-                </div>
 
-                <!-- Education -->
-                <div class="fade-in delay-100">
-                    <h4 class="text-xl font-bold text-neutral-900 mb-8 flex items-center gap-3">
-                        <span class="w-8 h-8 rounded bg-primary/10 text-primary flex items-center justify-center"><i class="fas fa-graduation-cap text-sm"></i></span>
-                        Education
-                    </h4>
-                    
-                    <div class="space-y-8 border-l-2 border-neutral-200 pl-8 ml-4 relative">
-                        <!-- Degree 1 -->
-                        <div class="relative">
-                            <span class="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-primary"></span>
-                            <h5 class="text-lg font-bold text-neutral-900">M.Sc. in Engineering in Computer Science</h5>
-                            <p class="text-primary-light font-medium mb-1">Sapienza University</p>
-                            <p class="text-sm text-neutral-400 mb-2">Sep 2021 - Oct 2023</p>
-                            <div class="inline-block px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded mb-3">110 with honors</div>
-                            <p class="text-neutral-600 text-sm leading-relaxed italic">
-                                Thesis: <a href="https://github.com/whoami-Lory271/SLinear-Time-Series-Forecasting" class="underline hover:text-primary">SLinear Time Series Forecasting</a>
-                            </p>
-                            <p class="text-neutral-500 text-xs mt-2">
-                                Algorithm Design, Cybersecurity, Distributed Systems, AI/ML, Deep Learning.
-                            </p>
-                        </div>
-
-                        <!-- Degree 2 -->
-                        <div class="relative">
-                            <span class="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-neutral-300"></span>
-                            <h5 class="text-lg font-bold text-neutral-900">B.S. in Engineering in Computer Science</h5>
-                            <p class="text-primary-light font-medium mb-1">Sapienza University</p>
-                            <p class="text-sm text-neutral-400 mb-2">Sep 2018 - Oct 2021</p>
-                            <div class="inline-block px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded mb-3">110 with honors</div>
-                            <p class="text-neutral-600 text-sm leading-relaxed italic">
-                                Thesis available on <a href="https://github.com/whoami-Lory271/Tesi-Triennale" class="underline hover:text-primary">GitHub</a>.
+                    <!-- Bio -->
+                    <div class="fade-in delay-100 order-1 lg:order-2">
+                        <h2
+                            class="text-sm font-bold text-primary tracking-widest uppercase mb-3"
+                        >
+                            About Me
+                        </h2>
+                        <h3
+                            class="text-3xl md:text-4xl font-bold text-neutral-900 mb-6"
+                        >
+                            Code-first engineering with strategic leadership.
+                        </h3>
+                        <p
+                            class="text-lg text-neutral-600 mb-6 leading-relaxed"
+                        >
+                            I am a Senior Software Engineer and Technical Lead
+                            based in Rome, with a Master's in Computer Science
+                            Engineering (110 cum laude). My expertise lies in
+                            architecting and implementing scalable,
+                            fault-tolerant distributed systems.
+                        </p>
+                        <p
+                            class="text-lg text-neutral-600 mb-6 leading-relaxed"
+                        >
+                            Currently, I am driving a critical international
+                            <strong>on-prem to Azure Cloud migration</strong>.
+                            My role involves deep technical work—designing
+                            Kubernetes clusters and optimizing backend
+                            performance for
+                            <strong>high concurrency</strong>—while leading a
+                            10-person engineering team to ensure successful
+                            delivery for international stakeholders.
+                        </p>
+                        <div
+                            class="p-6 bg-neutral-50 rounded-xl border border-neutral-100"
+                        >
+                            <div class="flex items-center gap-4 mb-2">
+                                <i
+                                    class="fas fa-language text-2xl text-primary-light"
+                                ></i>
+                                <h4 class="font-bold text-neutral-900">
+                                    Languages
+                                </h4>
+                            </div>
+                            <p class="text-neutral-600">
+                                Italian (Native), English (C1)
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 bg-white border-t border-neutral-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-                <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-3">Portfolio</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-neutral-900">Selected Projects</h3>
-            </div>
+        <!-- Experience & Education Section -->
+        <section id="experience" class="py-24 bg-neutral-50">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2
+                        class="text-sm font-bold text-primary tracking-widest uppercase mb-3"
+                    >
+                        Resume
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-neutral-900">
+                        Experience & Education
+                    </h3>
+                </div>
 
-            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                
-                <!-- Project 1: SLinear -->
-                <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-neutral-100 fade-in flex flex-col h-full">
-                    <div class="p-6 flex flex-col h-full">
-                        <div class="mb-4">
-                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
-                                <i class="fas fa-brain text-xl"></i>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Work Experience -->
+                    <div class="fade-in">
+                        <h4
+                            class="text-xl font-bold text-neutral-900 mb-8 flex items-center gap-3"
+                        >
+                            <span
+                                class="w-8 h-8 rounded bg-primary/10 text-primary flex items-center justify-center"
+                                ><i class="fas fa-briefcase text-sm"></i
+                            ></span>
+                            Professional Experience
+                        </h4>
+
+                        <div
+                            class="space-y-8 border-l-2 border-neutral-200 pl-8 ml-4 relative"
+                        >
+                            <!-- Job 1 -->
+                            <div class="relative">
+                                <span
+                                    class="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-primary"
+                                ></span>
+                                <h5 class="text-lg font-bold text-neutral-900">
+                                    Senior Software Engineer & Team Lead
+                                </h5>
+                                <p class="text-primary-light font-medium mb-1">
+                                    Ringmaster S.r.l
+                                </p>
+                                <p class="text-sm text-neutral-400 mb-3">
+                                    Jun 2022 - Present | Rome (International
+                                    Project)
+                                </p>
+                                <div
+                                    class="text-neutral-600 text-sm leading-relaxed mb-4 space-y-3"
+                                >
+                                    <p>
+                                        <strong
+                                            >On-Prem to Azure Migration
+                                            (International Client):</strong
+                                        >
+                                        Leading a
+                                        <strong
+                                            >10-person engineering team</strong
+                                        >
+                                        through a complex cloud migration.
+                                        Responsible for the full architectural
+                                        lifecycle, utilizing Spring Boot and
+                                        Kubernetes (AKS).
+                                    </p>
+                                    <ul class="list-disc pl-4 space-y-1">
+                                        <li>
+                                            Designed and implemented
+                                            high-concurrency systems handling
+                                            multiple customer integrations.
+                                        </li>
+                                        <li>
+                                            Achieved
+                                            <strong>zero downtime</strong>
+                                            during critical migration phases.
+                                        </li>
+                                        <li>
+                                            Optimized Middleware Gambling
+                                            applications for cloud-native
+                                            performance.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span
+                                        class="text-xs bg-primary text-white px-2 py-1 rounded"
+                                        >Azure AKS</span
+                                    >
+                                    <span
+                                        class="text-xs bg-white border border-neutral-200 px-2 py-1 rounded text-neutral-500"
+                                        >Spring Boot</span
+                                    >
+                                    <span
+                                        class="text-xs bg-white border border-neutral-200 px-2 py-1 rounded text-neutral-500"
+                                        >High Concurrency</span
+                                    >
+                                </div>
                             </div>
-                            <h4 class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition">SLinear</h4>
-                            <p class="text-sm font-semibold text-neutral-500 mb-3">State-of-the-Art Neural Network</p>
-                            <p class="text-neutral-600 text-sm mb-4 line-clamp-4">
-                                Developed a Neural Network for Time Series Forecasting that achieved <strong>State-of-the-Art (SOTA)</strong> performance on multiple benchmarks, outperforming complex Transformer-based models.
-                            </p>
-                        </div>
-                        <div class="mt-auto">
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded">Python</span>
-                                <span class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded">PyTorch</span>
-                                <span class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded">SOTA</span>
+
+                            <!-- Job 2 -->
+                            <div class="relative">
+                                <span
+                                    class="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-neutral-300"
+                                ></span>
+                                <h5 class="text-lg font-bold text-neutral-900">
+                                    Software Engineer Intern
+                                </h5>
+                                <p class="text-primary-light font-medium mb-1">
+                                    Bytewise S.r.l
+                                </p>
+                                <p class="text-sm text-neutral-400 mb-3">
+                                    Jun 2021 - Nov 2021 | Rome
+                                </p>
+                                <p
+                                    class="text-neutral-600 text-sm leading-relaxed"
+                                >
+                                    Development of web applications using
+                                    Express.js. Study of JavaScript, Node.js,
+                                    and React basics. Linux server interaction.
+                                </p>
                             </div>
-                            <a href="https://github.com/whoami-Lory271/SLinear-Time-Series-Forecasting" target="_blank" class="inline-flex items-center text-sm font-medium text-primary hover:text-primary-light">
-                                View Source <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                            </a>
+
+                            <!-- Job 3 -->
+                            <div class="relative">
+                                <span
+                                    class="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-neutral-300"
+                                ></span>
+                                <h5 class="text-lg font-bold text-neutral-900">
+                                    Basics Linux Course
+                                </h5>
+                                <p class="text-primary-light font-medium mb-1">
+                                    LUG Sapienza
+                                </p>
+                                <p class="text-sm text-neutral-400 mb-3">
+                                    Oct 2018 - Nov 2018
+                                </p>
+                                <p
+                                    class="text-neutral-600 text-sm leading-relaxed"
+                                >
+                                    Bash, Linux, VMware.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </article>
 
-                <!-- Project 2: Travel App -->
-                <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-neutral-100 fade-in delay-100 flex flex-col h-full">
-                    <div class="p-6 flex flex-col h-full">
-                        <div class="mb-4">
-                             <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
-                                <i class="fas fa-plane-departure text-xl"></i>
+                    <!-- Education -->
+                    <div class="fade-in delay-100">
+                        <h4
+                            class="text-xl font-bold text-neutral-900 mb-8 flex items-center gap-3"
+                        >
+                            <span
+                                class="w-8 h-8 rounded bg-primary/10 text-primary flex items-center justify-center"
+                                ><i class="fas fa-graduation-cap text-sm"></i
+                            ></span>
+                            Education
+                        </h4>
+
+                        <div
+                            class="space-y-8 border-l-2 border-neutral-200 pl-8 ml-4 relative"
+                        >
+                            <!-- Degree 1 -->
+                            <div class="relative">
+                                <span
+                                    class="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-primary"
+                                ></span>
+                                <h5 class="text-lg font-bold text-neutral-900">
+                                    M.Sc. in Engineering in Computer Science
+                                </h5>
+                                <p class="text-primary-light font-medium mb-1">
+                                    Sapienza University
+                                </p>
+                                <p class="text-sm text-neutral-400 mb-2">
+                                    Sep 2021 - Oct 2023
+                                </p>
+                                <div
+                                    class="inline-block px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded mb-3"
+                                >
+                                    110 with honors
+                                </div>
+                                <p
+                                    class="text-neutral-600 text-sm leading-relaxed italic"
+                                >
+                                    Thesis:
+                                    <a
+                                        href="https://github.com/whoami-Lory271/SLinear-Time-Series-Forecasting"
+                                        class="underline hover:text-primary"
+                                        >SLinear Time Series Forecasting</a
+                                    >
+                                </p>
+                                <p class="text-neutral-500 text-xs mt-2">
+                                    Algorithm Design, Cybersecurity, Distributed
+                                    Systems, AI/ML, Deep Learning.
+                                </p>
                             </div>
-                            <h4 class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition">Travel Application</h4>
-                            <p class="text-sm font-semibold text-neutral-500 mb-3">Android Social Travel App</p>
-                            <p class="text-neutral-600 text-sm mb-4 line-clamp-4">
-                                A social travel platform allowing users to create, store, and share itineraries in real-time. Features robust Google Maps integration and Firebase backend.
-                            </p>
-                        </div>
-                        <div class="mt-auto">
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded">Java</span>
-                                <span class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded">Android Studio</span>
-                                <span class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded">Firebase</span>
+
+                            <!-- Degree 2 -->
+                            <div class="relative">
+                                <span
+                                    class="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white bg-neutral-300"
+                                ></span>
+                                <h5 class="text-lg font-bold text-neutral-900">
+                                    B.S. in Engineering in Computer Science
+                                </h5>
+                                <p class="text-primary-light font-medium mb-1">
+                                    Sapienza University
+                                </p>
+                                <p class="text-sm text-neutral-400 mb-2">
+                                    Sep 2018 - Oct 2021
+                                </p>
+                                <div
+                                    class="inline-block px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded mb-3"
+                                >
+                                    110 with honors
+                                </div>
+                                <p
+                                    class="text-neutral-600 text-sm leading-relaxed italic"
+                                >
+                                    Thesis available on
+                                    <a
+                                        href="https://github.com/whoami-Lory271/Tesi-Triennale"
+                                        class="underline hover:text-primary"
+                                        >GitHub</a
+                                    >.
+                                </p>
                             </div>
-                            <a href="https://github.com/Luca-Gaudenzi/Travel_Application" target="_blank" class="inline-flex items-center text-sm font-medium text-primary hover:text-primary-light">
-                                View Source <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                            </a>
                         </div>
                     </div>
-                </article>
-
-                <!-- Project 3: Speed Detector -->
-                <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-neutral-100 fade-in delay-200 flex flex-col h-full">
-                    <div class="p-6 flex flex-col h-full">
-                        <div class="mb-4">
-                             <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
-                                <i class="fas fa-tachometer-alt text-xl"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition">Speed Detector Manager</h4>
-                            <p class="text-sm font-semibold text-neutral-500 mb-3">Microservice Framework</p>
-                            <p class="text-neutral-600 text-sm mb-4 line-clamp-4">
-                                Microservice framework for receiving and analyzing traffic fines. Built on Spring Boot using Microservices architecture patterns and ActiveMQ as a message broker.
-                            </p>
-                        </div>
-                        <div class="mt-auto">
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded">Spring</span>
-                                <span class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded">Docker</span>
-                                <span class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded">ActiveMQ</span>
-                            </div>
-                            <a href="https://github.com/whoami-Lory271/SpeedDetectorManager" target="_blank" class="inline-flex items-center text-sm font-medium text-primary hover:text-primary-light">
-                                View Source <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-neutral-50 border-t border-neutral-100">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-sm font-bold text-primary tracking-widest uppercase mb-3">Get in Touch</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-neutral-900">Let's connect.</h3>
+        <!-- Projects Section -->
+        <section
+            id="projects"
+            class="py-24 bg-white border-t border-neutral-100"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                    <h2
+                        class="text-sm font-bold text-primary tracking-widest uppercase mb-3"
+                    >
+                        Portfolio
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-neutral-900">
+                        Selected Projects
+                    </h3>
+                </div>
+
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Project 1: SLinear -->
+                    <article
+                        class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-neutral-100 fade-in flex flex-col h-full"
+                    >
+                        <div class="p-6 flex flex-col h-full">
+                            <div class="mb-4">
+                                <div
+                                    class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4"
+                                >
+                                    <i class="fas fa-brain text-xl"></i>
+                                </div>
+                                <h4
+                                    class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition"
+                                >
+                                    SLinear
+                                </h4>
+                                <p
+                                    class="text-sm font-semibold text-neutral-500 mb-3"
+                                >
+                                    State-of-the-Art Neural Network
+                                </p>
+                                <p
+                                    class="text-neutral-600 text-sm mb-4 line-clamp-4"
+                                >
+                                    Developed a Neural Network for Time Series
+                                    Forecasting that achieved
+                                    <strong>State-of-the-Art (SOTA)</strong>
+                                    performance on multiple benchmarks,
+                                    outperforming complex Transformer-based
+                                    models.
+                                </p>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
+                                        >Python</span
+                                    >
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
+                                        >PyTorch</span
+                                    >
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
+                                        >SOTA</span
+                                    >
+                                </div>
+                                <a
+                                    href="https://github.com/whoami-Lory271/SLinear-Time-Series-Forecasting"
+                                    target="_blank"
+                                    class="inline-flex items-center text-sm font-medium text-primary hover:text-primary-light"
+                                >
+                                    View Source
+                                    <i
+                                        class="fas fa-arrow-right ml-2 text-xs"
+                                    ></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Travel App -->
+                    <article
+                        class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-neutral-100 fade-in delay-100 flex flex-col h-full"
+                    >
+                        <div class="p-6 flex flex-col h-full">
+                            <div class="mb-4">
+                                <div
+                                    class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4"
+                                >
+                                    <i
+                                        class="fas fa-plane-departure text-xl"
+                                    ></i>
+                                </div>
+                                <h4
+                                    class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition"
+                                >
+                                    Travel Application
+                                </h4>
+                                <p
+                                    class="text-sm font-semibold text-neutral-500 mb-3"
+                                >
+                                    Android Social Travel App
+                                </p>
+                                <p
+                                    class="text-neutral-600 text-sm mb-4 line-clamp-4"
+                                >
+                                    A social travel platform allowing users to
+                                    create, store, and share itineraries in
+                                    real-time. Features robust Google Maps
+                                    integration and Firebase backend.
+                                </p>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
+                                        >Java</span
+                                    >
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
+                                        >Android Studio</span
+                                    >
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
+                                        >Firebase</span
+                                    >
+                                </div>
+                                <a
+                                    href="https://github.com/Luca-Gaudenzi/Travel_Application"
+                                    target="_blank"
+                                    class="inline-flex items-center text-sm font-medium text-primary hover:text-primary-light"
+                                >
+                                    View Source
+                                    <i
+                                        class="fas fa-arrow-right ml-2 text-xs"
+                                    ></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Speed Detector -->
+                    <article
+                        class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-neutral-100 fade-in delay-200 flex flex-col h-full"
+                    >
+                        <div class="p-6 flex flex-col h-full">
+                            <div class="mb-4">
+                                <div
+                                    class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4"
+                                >
+                                    <i
+                                        class="fas fa-tachometer-alt text-xl"
+                                    ></i>
+                                </div>
+                                <h4
+                                    class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition"
+                                >
+                                    Speed Detector Manager
+                                </h4>
+                                <p
+                                    class="text-sm font-semibold text-neutral-500 mb-3"
+                                >
+                                    Microservice Framework
+                                </p>
+                                <p
+                                    class="text-neutral-600 text-sm mb-4 line-clamp-4"
+                                >
+                                    Microservice framework for receiving and
+                                    analyzing traffic fines. Built on Spring
+                                    Boot using Microservices architecture
+                                    patterns and ActiveMQ as a message broker.
+                                </p>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
+                                        >Spring</span
+                                    >
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
+                                        >Docker</span
+                                    >
+                                    <span
+                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
+                                        >ActiveMQ</span
+                                    >
+                                </div>
+                                <a
+                                    href="https://github.com/whoami-Lory271/SpeedDetectorManager"
+                                    target="_blank"
+                                    class="inline-flex items-center text-sm font-medium text-primary hover:text-primary-light"
+                                >
+                                    View Source
+                                    <i
+                                        class="fas fa-arrow-right ml-2 text-xs"
+                                    ></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-neutral-100 fade-in">
-                <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-6" id="contactForm">
-                    <div class="grid md:grid-cols-2 gap-6">
+        <!-- Contact Section -->
+        <section
+            id="contact"
+            class="py-24 bg-neutral-50 border-t border-neutral-100"
+        >
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2
+                        class="text-sm font-bold text-primary tracking-widest uppercase mb-3"
+                    >
+                        Get in Touch
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-neutral-900">
+                        Let's connect.
+                    </h3>
+                </div>
+
+                <div
+                    class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-neutral-100 fade-in"
+                >
+                    <form
+                        action="https://api.web3forms.com/submit"
+                        method="POST"
+                        class="space-y-6"
+                        id="contactForm"
+                    >
+                        <!-- Web3Forms: replace the value below with your own access key from https://web3forms.com (enter your email, no signup needed) -->
+                        <input
+                            type="hidden"
+                            name="access_key"
+                            value="aae3ef4f-ffd4-46c0-9234-3ec596d9db88"
+                        />
+                        <input
+                            type="hidden"
+                            name="subject"
+                            value="New message from your portfolio"
+                        />
+                        <input
+                            type="hidden"
+                            name="from_name"
+                            value="Portfolio Contact Form"
+                        />
+                        <!-- Honeypot field to deter bots; real users leave it empty -->
+                        <input
+                            type="checkbox"
+                            name="botcheck"
+                            class="hidden"
+                            style="display: none"
+                            tabindex="-1"
+                            autocomplete="off"
+                        />
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label
+                                    for="name"
+                                    class="block text-sm font-medium text-neutral-700 mb-2"
+                                    >Name</label
+                                >
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    required
+                                    class="w-full px-4 py-3 rounded-lg bg-neutral-50 border border-neutral-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    for="email"
+                                    class="block text-sm font-medium text-neutral-700 mb-2"
+                                    >Email</label
+                                >
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    required
+                                    class="w-full px-4 py-3 rounded-lg bg-neutral-50 border border-neutral-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
+                                />
+                            </div>
+                        </div>
                         <div>
-                            <label for="name" class="block text-sm font-medium text-neutral-700 mb-2">Name</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg bg-neutral-50 border border-neutral-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
+                            <label
+                                for="message"
+                                class="block text-sm font-medium text-neutral-700 mb-2"
+                                >Message</label
+                            >
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="4"
+                                required
+                                class="w-full px-4 py-3 rounded-lg bg-neutral-50 border border-neutral-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
+                            ></textarea>
                         </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-neutral-700 mb-2">Email</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-neutral-50 border border-neutral-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
+                        <button
+                            type="submit"
+                            class="w-full px-6 py-4 bg-primary text-white font-medium rounded-lg hover:bg-primary-light transition transform active:scale-[0.98] flex justify-center items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                        >
+                            Send Message
+                            <i class="fas fa-paper-plane text-sm"></i>
+                        </button>
+                        <p
+                            id="formStatus"
+                            class="text-sm text-center hidden"
+                            role="status"
+                            aria-live="polite"
+                        ></p>
+                    </form>
+
+                    <div
+                        class="mt-10 pt-6 border-t border-neutral-200 flex flex-col items-center gap-4 text-neutral-600"
+                    >
+                        <div
+                            class="flex flex-col md:flex-row gap-6 text-center"
+                        >
+                            <a
+                                href="mailto:desantis.lorenzo.271@gmail.com"
+                                class="flex items-center gap-2 hover:text-primary transition font-medium"
+                            >
+                                <i class="fas fa-envelope text-primary"></i>
+                                desantis.lorenzo.271@gmail.com
+                            </a>
+                            <a
+                                href="tel:+393290347747"
+                                class="flex items-center gap-2 hover:text-primary transition font-medium"
+                            >
+                                <i class="fas fa-mobile-alt text-primary"></i>
+                                +39 329 034 7747
+                            </a>
                         </div>
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-neutral-700 mb-2">Message</label>
-                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-neutral-50 border border-neutral-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"></textarea>
-                    </div>
-                    <button type="submit" class="w-full px-6 py-4 bg-primary text-white font-medium rounded-lg hover:bg-primary-light transition transform active:scale-[0.98] flex justify-center items-center gap-2">
-                        Send Message <i class="fas fa-paper-plane text-sm"></i>
-                    </button>
-                </form>
-                
-                <div class="mt-10 pt-6 border-t border-neutral-200 flex flex-col items-center gap-4 text-neutral-600">
-                    <div class="flex flex-col md:flex-row gap-6 text-center">
-                        <a href="mailto:desantis.lorenzo.271@gmail.com" class="flex items-center gap-2 hover:text-primary transition font-medium">
-                            <i class="fas fa-envelope text-primary"></i> desantis.lorenzo.271@gmail.com
-                        </a>
-                        <a href="tel:+393290347747" class="flex items-center gap-2 hover:text-primary transition font-medium">
-                            <i class="fas fa-mobile-alt text-primary"></i> +39 329 034 7747
-                        </a>
-                    </div>
-                    <div class="flex gap-6 mt-2">
-                        <a href="https://github.com/whoami-Lory271" target="_blank" class="hover:text-primary transition text-xl"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/desantis-lorenzo" target="_blank" class="hover:text-primary transition text-xl"><i class="fab fa-linkedin"></i></a>
+                        <div class="flex gap-6 mt-2">
+                            <a
+                                href="https://github.com/whoami-Lory271"
+                                target="_blank"
+                                class="hover:text-primary transition text-xl"
+                                ><i class="fab fa-github"></i
+                            ></a>
+                            <a
+                                href="https://www.linkedin.com/in/desantis-lorenzo"
+                                target="_blank"
+                                class="hover:text-primary transition text-xl"
+                                ><i class="fab fa-linkedin"></i
+                            ></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-neutral-200 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-primary font-bold text-xl">LDS.</div>
-            <p class="text-neutral-500 text-sm">© <span id="year"></span> Lorenzo De Santis.</p>
-        </div>
-    </footer>
+        <!-- Footer -->
+        <footer class="bg-white border-t border-neutral-200 py-12">
+            <div
+                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4"
+            >
+                <div class="text-primary font-bold text-xl">LDS.</div>
+                <p class="text-neutral-500 text-sm">
+                    © <span id="year"></span> Lorenzo De Santis.
+                </p>
+            </div>
+        </footer>
 
-    <!-- JavaScript Functionality -->
-    <script>
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const icon = btn.querySelector('i');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        <!-- JavaScript Functionality -->
+        <script>
+            // Mobile Menu Toggle
+            const btn = document.getElementById("mobile-menu-btn");
+            const menu = document.getElementById("mobile-menu");
+            const icon = btn.querySelector("i");
+            const mobileLinks = document.querySelectorAll(".mobile-link");
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('open');
-            if (menu.classList.contains('open')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.remove('open');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-
-        // Dynamic Year
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Form Submission Handler (Demo)
-        const form = document.getElementById('contactForm');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault(); 
-            const btn = form.querySelector('button');
-            const originalText = btn.innerHTML;
-            
-            btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-            btn.classList.remove('bg-primary');
-            btn.classList.add('bg-green-600');
-            
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.classList.add('bg-primary');
-                btn.classList.remove('bg-green-600');
-                form.reset();
-                alert("Note: This is a static portfolio. Configure Formspree or a similar service in the HTML to send real emails.");
-            }, 3000);
-        });
-
-        // Fade-in Animation
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+            btn.addEventListener("click", () => {
+                menu.classList.toggle("open");
+                if (menu.classList.contains("open")) {
+                    icon.classList.remove("fa-bars");
+                    icon.classList.add("fa-times");
+                } else {
+                    icon.classList.remove("fa-times");
+                    icon.classList.add("fa-bars");
                 }
             });
-        }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
-</body>
+            mobileLinks.forEach((link) => {
+                link.addEventListener("click", () => {
+                    menu.classList.remove("open");
+                    icon.classList.remove("fa-times");
+                    icon.classList.add("fa-bars");
+                });
+            });
+
+            // Dynamic Year
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+
+            // Form Submission Handler (Web3Forms)
+            const form = document.getElementById("contactForm");
+            const status = document.getElementById("formStatus");
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+
+                btn.disabled = true;
+                btn.innerHTML =
+                    '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                status.classList.add("hidden");
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: "POST",
+                        headers: { Accept: "application/json" },
+                        body: new FormData(form),
+                    });
+                    const data = await response.json();
+
+                    if (response.ok && data.success) {
+                        form.reset();
+                        btn.innerHTML =
+                            '<i class="fas fa-check"></i> Message Sent!';
+                        btn.classList.remove("bg-primary");
+                        btn.classList.add("bg-green-600");
+                        status.textContent =
+                            "Thanks! Your message has been sent — I'll get back to you soon.";
+                        status.className = "text-sm text-center text-green-600";
+                    } else {
+                        throw new Error(data.message || "Submission failed");
+                    }
+                } catch (err) {
+                    btn.innerHTML =
+                        '<i class="fas fa-triangle-exclamation"></i> Failed to send';
+                    btn.classList.remove("bg-primary");
+                    btn.classList.add("bg-red-600");
+                    status.textContent =
+                        "Something went wrong. Please email me directly at desantis.lorenzo.271@gmail.com.";
+                    status.className = "text-sm text-center text-red-600";
+                } finally {
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.innerHTML = originalText;
+                        btn.classList.remove("bg-green-600", "bg-red-600");
+                        btn.classList.add("bg-primary");
+                    }, 4000);
+                }
+            });
+
+            // Fade-in Animation
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1,
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll(".fade-in").forEach((el) => {
+                observer.observe(el);
+            });
+        </script>
+    </body>
 </html>
