@@ -33,7 +33,11 @@
                     extend: {
                         fontFamily: {
                             sans: ["Inter", "sans-serif"],
-                            mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
+                            mono: [
+                                "'JetBrains Mono'",
+                                "ui-monospace",
+                                "monospace",
+                            ],
                         },
                         colors: {
                             term: {
@@ -92,71 +96,183 @@
         class="bg-term-bg text-term-text antialiased selection:bg-term-green selection:text-term-bg"
     >
         <!-- Navigation -->
-        <nav class="fixed w-full z-50 bg-term-bg/90 backdrop-blur-sm border-b border-term-border" id="navbar">
+        <nav
+            class="fixed w-full z-50 bg-term-bg/90 backdrop-blur-sm border-b border-term-border"
+            id="navbar"
+        >
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-16 items-center font-mono text-sm">
-                    <a href="#home" class="text-term-green font-medium tracking-tight">
-                        lorenzo@portfolio<span class="text-term-muted">:</span><span class="text-term-blue">~</span><span class="text-term-muted">$</span>
+                <div
+                    class="flex justify-between h-16 items-center font-mono text-sm"
+                >
+                    <a
+                        href="#home"
+                        class="text-term-green font-medium tracking-tight"
+                    >
+                        lorenzo@portfolio<span class="text-term-muted">:</span
+                        ><span class="text-term-blue">~</span
+                        ><span class="text-term-muted">$</span>
                     </a>
                     <div class="hidden md:flex space-x-6 items-center">
-                        <a href="#home" class="text-term-muted hover:text-term-green transition">~/home</a>
-                        <a href="#about" class="text-term-muted hover:text-term-green transition">~/about</a>
-                        <a href="#experience" class="text-term-muted hover:text-term-green transition">~/work</a>
-                        <a href="#projects" class="text-term-muted hover:text-term-green transition">~/projects</a>
-                        <a href="#contact" class="text-term-green border border-term-green/40 rounded px-3 py-1.5 hover:bg-term-green hover:text-term-bg transition">./contact.sh</a>
+                        <a
+                            href="#home"
+                            class="text-term-muted hover:text-term-green transition"
+                            >~/home</a
+                        >
+                        <a
+                            href="#about"
+                            class="text-term-muted hover:text-term-green transition"
+                            >~/about</a
+                        >
+                        <a
+                            href="#experience"
+                            class="text-term-muted hover:text-term-green transition"
+                            >~/work</a
+                        >
+                        <a
+                            href="#projects"
+                            class="text-term-muted hover:text-term-green transition"
+                            >~/projects</a
+                        >
+                        <a
+                            href="#contact"
+                            class="text-term-green border border-term-green/40 rounded px-3 py-1.5 hover:bg-term-green hover:text-term-bg transition"
+                            >./contact.sh</a
+                        >
                     </div>
                     <div class="md:hidden flex items-center">
-                        <button id="mobile-menu-btn" class="text-term-muted hover:text-term-green focus:outline-none p-2">
+                        <button
+                            id="mobile-menu-btn"
+                            class="text-term-muted hover:text-term-green focus:outline-none p-2"
+                        >
                             <i class="fas fa-terminal"></i>
                         </button>
                     </div>
                 </div>
             </div>
-            <div id="mobile-menu" class="md:hidden bg-term-panel border-b border-term-border font-mono">
+            <div
+                id="mobile-menu"
+                class="md:hidden bg-term-panel border-b border-term-border font-mono"
+            >
                 <div class="px-4 pt-2 pb-6 space-y-2">
-                    <a href="#home" class="mobile-link block px-3 py-2 rounded text-sm text-term-muted hover:text-term-green hover:bg-term-bg">~/home</a>
-                    <a href="#about" class="mobile-link block px-3 py-2 rounded text-sm text-term-muted hover:text-term-green hover:bg-term-bg">~/about</a>
-                    <a href="#experience" class="mobile-link block px-3 py-2 rounded text-sm text-term-muted hover:text-term-green hover:bg-term-bg">~/work</a>
-                    <a href="#projects" class="mobile-link block px-3 py-2 rounded text-sm text-term-muted hover:text-term-green hover:bg-term-bg">~/projects</a>
-                    <a href="#contact" class="mobile-link block px-3 py-2 rounded text-sm text-term-green hover:bg-term-bg">./contact.sh</a>
+                    <a
+                        href="#home"
+                        class="mobile-link block px-3 py-2 rounded text-sm text-term-muted hover:text-term-green hover:bg-term-bg"
+                        >~/home</a
+                    >
+                    <a
+                        href="#about"
+                        class="mobile-link block px-3 py-2 rounded text-sm text-term-muted hover:text-term-green hover:bg-term-bg"
+                        >~/about</a
+                    >
+                    <a
+                        href="#experience"
+                        class="mobile-link block px-3 py-2 rounded text-sm text-term-muted hover:text-term-green hover:bg-term-bg"
+                        >~/work</a
+                    >
+                    <a
+                        href="#projects"
+                        class="mobile-link block px-3 py-2 rounded text-sm text-term-muted hover:text-term-green hover:bg-term-bg"
+                        >~/projects</a
+                    >
+                    <a
+                        href="#contact"
+                        class="mobile-link block px-3 py-2 rounded text-sm text-term-green hover:bg-term-bg"
+                        >./contact.sh</a
+                    >
                 </div>
             </div>
         </nav>
 
         <!-- Hero Section -->
         <section id="home" class="min-h-screen flex items-center pt-16">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div
+                class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid md:grid-cols-2 gap-12 md:gap-16 items-center"
+            >
                 <!-- Terminal session -->
                 <div class="order-2 md:order-1">
-                    <p class="font-mono text-sm text-term-muted mb-2"><span class="text-term-green">$</span> whoami</p>
-                    <h1 class="font-mono text-4xl md:text-6xl font-bold text-term-text tracking-tight mb-4">
+                    <p class="font-mono text-sm text-term-muted mb-2">
+                        <span class="text-term-green">$</span> whoami
+                    </p>
+                    <h1
+                        class="font-mono text-4xl md:text-6xl font-bold text-term-text tracking-tight mb-4"
+                    >
                         Lorenzo De Santis
                     </h1>
-                    <p class="font-mono text-sm text-term-green mb-6">// Senior Software Engineer</p>
-                    <p class="text-lg text-term-muted max-w-lg leading-relaxed mb-8">
-                        <span class="font-mono text-term-green">&gt;</span>
-                        Architecting High-Performance Backend Systems and Scalable Cloud Solutions (Azure). Hands-on Technical Leader for critical migrations.<span class="cursor"></span>
+                    <p class="font-mono text-sm text-term-green mb-6">
+                        // Senior Software Engineer
                     </p>
-                    <div class="flex gap-5 mb-10 text-xl text-term-muted font-mono">
-                        <a href="https://github.com/l-desantis" target="_blank" class="hover:text-term-green transition"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/desantis-lorenzo" target="_blank" class="hover:text-term-green transition"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:desantis.lorenzo.271@gmail.com" class="hover:text-term-green transition"><i class="fas fa-envelope"></i></a>
+                    <p
+                        class="text-lg text-term-muted max-w-lg leading-relaxed mb-8"
+                    >
+                        <span class="font-mono text-term-green">&gt;</span>
+                        Backend & distributed systems engineer building scalable
+                        cloud solutions on Azure, exploring how AI changes the
+                        way software is built.<span class="cursor"></span>
+                    </p>
+                    <div
+                        class="flex gap-5 mb-10 text-xl text-term-muted font-mono"
+                    >
+                        <a
+                            href="https://github.com/l-desantis"
+                            target="_blank"
+                            class="hover:text-term-green transition"
+                            ><i class="fab fa-github"></i
+                        ></a>
+                        <a
+                            href="https://www.linkedin.com/in/desantis-lorenzo"
+                            target="_blank"
+                            class="hover:text-term-green transition"
+                            ><i class="fab fa-linkedin"></i
+                        ></a>
+                        <a
+                            href="mailto:desantis.lorenzo.271@gmail.com"
+                            class="hover:text-term-green transition"
+                            ><i class="fas fa-envelope"></i
+                        ></a>
                     </div>
-                    <div class="flex flex-col sm:flex-row gap-4 font-mono text-sm">
-                        <a href="#experience" class="px-5 py-3 text-term-bg bg-term-green rounded hover:bg-term-green/90 transition text-center">$ ./view-experience</a>
-                        <a href="#contact" class="px-5 py-3 text-term-green border border-term-border rounded hover:border-term-green transition text-center">$ ./contact-me</a>
+                    <div
+                        class="flex flex-col sm:flex-row gap-4 font-mono text-sm"
+                    >
+                        <a
+                            href="#experience"
+                            class="px-5 py-3 text-term-bg bg-term-green rounded hover:bg-term-green/90 transition text-center"
+                            >$ ./view-experience</a
+                        >
+                        <a
+                            href="#contact"
+                            class="px-5 py-3 text-term-green border border-term-border rounded hover:border-term-green transition text-center"
+                            >$ ./contact-me</a
+                        >
                     </div>
                 </div>
                 <!-- Avatar as a terminal window -->
-                <div class="order-1 md:order-2 flex justify-center md:justify-end">
-                    <div class="w-72 md:w-80 rounded-lg overflow-hidden border border-term-border bg-term-panel">
-                        <div class="flex items-center gap-2 px-4 py-2.5 border-b border-term-border">
-                            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
-                            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
-                            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
-                            <span class="ml-2 font-mono text-xs text-term-muted">~/avatar.png</span>
+                <div
+                    class="order-1 md:order-2 flex justify-center md:justify-end"
+                >
+                    <div
+                        class="w-72 md:w-80 rounded-lg overflow-hidden border border-term-border bg-term-panel"
+                    >
+                        <div
+                            class="flex items-center gap-2 px-4 py-2.5 border-b border-term-border"
+                        >
+                            <span
+                                class="w-3 h-3 rounded-full bg-red-500/80"
+                            ></span>
+                            <span
+                                class="w-3 h-3 rounded-full bg-yellow-500/80"
+                            ></span>
+                            <span
+                                class="w-3 h-3 rounded-full bg-green-500/80"
+                            ></span>
+                            <span class="ml-2 font-mono text-xs text-term-muted"
+                                >~/avatar.png</span
+                            >
                         </div>
-                        <img src="avatar.png" alt="Lorenzo De Santis" class="object-cover w-full aspect-square" />
+                        <img
+                            src="avatar.png"
+                            alt="Lorenzo De Santis"
+                            class="object-cover w-full aspect-square"
+                        />
                     </div>
                 </div>
             </div>
@@ -166,52 +282,150 @@
         <section id="about" class="py-24 border-t border-term-border">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <p class="font-mono text-sm text-term-green mb-2">// about</p>
-                <h2 class="font-mono text-2xl md:text-3xl font-bold text-term-text mb-10"><span class="text-term-muted">$</span> cat about.md</h2>
+                <h2
+                    class="font-mono text-2xl md:text-3xl font-bold text-term-text mb-10"
+                >
+                    <span class="text-term-muted">$</span> cat about.md
+                </h2>
                 <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                     <!-- Bio -->
                     <div>
                         <p class="text-lg text-term-muted mb-6 leading-relaxed">
-                            Backend and distributed systems engineer, MSc in Computer Science (Sapienza, 110 cum laude), with professional experience designing and operating <strong class="text-term-text">high-performance, scalable systems on Microsoft Azure</strong> within international, large-scale programs. End-to-end delivery across backend services, RESTful APIs, real-time data pipelines, Kubernetes/AKS infrastructure and CI/CD — combined with hands-on AI and ML expertise from both research and production.
+                            Backend and distributed systems engineer, MSc in
+                            Computer Science (Sapienza, 110 cum laude), with
+                            professional experience designing and operating
+                            <strong class="text-term-text"
+                                >high-performance, scalable systems on Microsoft
+                                Azure</strong
+                            >
+                            within international, large-scale programs.
+                            End-to-end delivery across backend services, RESTful
+                            APIs, real-time data pipelines, Kubernetes/AKS
+                            infrastructure and CI/CD — combined with hands-on AI
+                            and ML expertise from both research and production.
                         </p>
                         <p class="text-lg text-term-muted mb-6 leading-relaxed">
-                            I follow developments in AI agents and AI-assisted programming closely — not just as a user, but out of genuine curiosity about how they change the way software is built. That curiosity drove <strong class="text-term-text">DevTrend</strong>: an autonomous LLM-powered pipeline where the model handles only what traditional programming cannot — extracting structure from unstructured signals — while ingestion, clustering, scoring and delivery stay deterministic and testable. Building it sharpened how I think about <strong class="text-term-text">AI-augmented development</strong>: AI as a productive teammate, used deliberately rather than everywhere.
+                            I follow developments in AI agents and AI-assisted
+                            programming closely — not just as a user, but out of
+                            genuine curiosity about how they change the way
+                            software is built. That curiosity drove
+                            <strong class="text-term-text">DevTrend</strong>: an
+                            autonomous LLM-powered pipeline where the model
+                            handles only what traditional programming cannot —
+                            extracting structure from unstructured signals —
+                            while ingestion, clustering, scoring and delivery
+                            stay deterministic and testable. Building it
+                            sharpened how I think about
+                            <strong class="text-term-text"
+                                >AI-augmented development</strong
+                            >: AI as a productive teammate, used deliberately
+                            rather than everywhere.
                         </p>
                         <p class="text-lg text-term-muted mb-6 leading-relaxed">
-                            My ML interest has academic roots too. My MSc thesis, <strong class="text-term-text">SLinear</strong>, was a novel deep-learning architecture for large-scale multidimensional time-series forecasting — I built the full pipeline from data preprocessing to benchmarking, achieving SOTA on multiple datasets. Outside engineering, I have been passionate about engines and the automotive world for as long as I can remember.
+                            My ML interest has academic roots too. My MSc
+                            thesis,
+                            <strong class="text-term-text">SLinear</strong>, was
+                            a novel deep-learning architecture for large-scale
+                            multidimensional time-series forecasting — I built
+                            the full pipeline from data preprocessing to
+                            benchmarking, achieving SOTA on multiple datasets.
+                            Outside engineering, I have been passionate about
+                            engines and the automotive world for as long as I
+                            can remember.
                         </p>
-                        <div class="font-mono text-sm bg-term-panel border border-term-border rounded-md p-4">
+                        <div
+                            class="font-mono text-sm bg-term-panel border border-term-border rounded-md p-4"
+                        >
                             <span class="text-term-green">$</span> locale
-                            <p class="text-term-muted mt-1">Italian (Native) · English (C1)</p>
+                            <p class="text-term-muted mt-1">
+                                Italian (Native) · English (C1)
+                            </p>
                         </div>
                     </div>
                     <!-- Skills -->
                     <div>
                         <div class="space-y-6">
                             <div>
-                                <h4 class="font-mono text-xs text-term-muted mb-3">// languages & backend</h4>
+                                <h4
+                                    class="font-mono text-xs text-term-muted mb-3"
+                                >
+                                    // languages & backend
+                                </h4>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1">[java]</span>
-                                    <span class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1">[spring-boot]</span>
-                                    <span class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1">[python]</span>
-                                    <span class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1">[sql]</span>
-                                    <span class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1">[postgresql]</span>
+                                    <span
+                                        class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1"
+                                        >[java]</span
+                                    >
+                                    <span
+                                        class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1"
+                                        >[spring-boot]</span
+                                    >
+                                    <span
+                                        class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1"
+                                        >[python]</span
+                                    >
+                                    <span
+                                        class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1"
+                                        >[sql]</span
+                                    >
+                                    <span
+                                        class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1"
+                                        >[postgresql]</span
+                                    >
                                 </div>
                             </div>
                             <div>
-                                <h4 class="font-mono text-xs text-term-muted mb-3">// cloud & devops</h4>
+                                <h4
+                                    class="font-mono text-xs text-term-muted mb-3"
+                                >
+                                    // cloud & devops
+                                </h4>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="font-mono text-xs text-term-blue border border-term-blue/40 rounded px-2 py-1">[azure-aks]</span>
-                                    <span class="font-mono text-xs text-term-blue border border-term-blue/40 rounded px-2 py-1">[kubernetes]</span>
-                                    <span class="font-mono text-xs text-term-blue border border-term-blue/40 rounded px-2 py-1">[docker]</span>
-                                    <span class="font-mono text-xs text-term-blue border border-term-blue/40 rounded px-2 py-1">[ci-cd]</span>
+                                    <span
+                                        class="font-mono text-xs text-term-blue border border-term-blue/40 rounded px-2 py-1"
+                                        >[azure-aks]</span
+                                    >
+                                    <span
+                                        class="font-mono text-xs text-term-blue border border-term-blue/40 rounded px-2 py-1"
+                                        >[kubernetes]</span
+                                    >
+                                    <span
+                                        class="font-mono text-xs text-term-blue border border-term-blue/40 rounded px-2 py-1"
+                                        >[docker]</span
+                                    >
+                                    <span
+                                        class="font-mono text-xs text-term-blue border border-term-blue/40 rounded px-2 py-1"
+                                        >[ci-cd]</span
+                                    >
                                 </div>
                             </div>
                             <div>
-                                <h4 class="font-mono text-xs text-term-muted mb-3">// strengths</h4>
-                                <ul class="font-mono text-sm text-term-muted space-y-1.5">
-                                    <li><span class="text-term-green">- [x]</span> Technical Leadership</li>
-                                    <li><span class="text-term-green">- [x]</span> High-Stakes Architecture</li>
-                                    <li><span class="text-term-green">- [x]</span> Global Collaboration</li>
+                                <h4
+                                    class="font-mono text-xs text-term-muted mb-3"
+                                >
+                                    // strengths
+                                </h4>
+                                <ul
+                                    class="font-mono text-sm text-term-muted space-y-1.5"
+                                >
+                                    <li>
+                                        <span class="text-term-green"
+                                            >- [x]</span
+                                        >
+                                        Technical Leadership
+                                    </li>
+                                    <li>
+                                        <span class="text-term-green"
+                                            >- [x]</span
+                                        >
+                                        High-Stakes Architecture
+                                    </li>
+                                    <li>
+                                        <span class="text-term-green"
+                                            >- [x]</span
+                                        >
+                                        Global Collaboration
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -223,72 +437,223 @@
         <!-- Experience & Education Section -->
         <section id="experience" class="py-24 border-t border-term-border">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="font-mono text-sm text-term-green mb-2">// experience</p>
-                <h2 class="font-mono text-2xl md:text-3xl font-bold text-term-text mb-12"><span class="text-term-muted">$</span> cat experience.log</h2>
+                <p class="font-mono text-sm text-term-green mb-2">
+                    // experience
+                </p>
+                <h2
+                    class="font-mono text-2xl md:text-3xl font-bold text-term-text mb-12"
+                >
+                    <span class="text-term-muted">$</span> cat experience.log
+                </h2>
 
                 <div class="grid md:grid-cols-2 gap-12">
                     <!-- Work -->
                     <div>
-                        <h4 class="font-mono text-sm text-term-amber mb-6">~/work</h4>
+                        <h4 class="font-mono text-sm text-term-amber mb-6">
+                            ~/work
+                        </h4>
                         <div class="space-y-8 border-l border-term-border pl-6">
                             <!-- Ringmaster -->
                             <div class="relative">
-                                <span class="absolute -left-[26px] top-1.5 w-2.5 h-2.5 rounded-full bg-term-green"></span>
-                                <h5 class="font-mono text-base font-bold text-term-text">Senior Software Engineer &amp; Team Lead</h5>
-                                <p class="text-term-blue text-sm">Ringmaster S.r.l</p>
-                                <p class="font-mono text-xs text-term-muted mb-3">Jun 2022 - Present · Rome (International Project)</p>
-                                <div class="text-term-muted text-sm leading-relaxed space-y-2">
-                                    <p><strong class="text-term-text">On-Prem to Azure Cloud Migration:</strong> Led the end-to-end migration of a large-scale backend to a cloud-native microservice architecture on Microsoft Azure (Kubernetes/AKS, Helm, Jenkins CI/CD), owning the full delivery lifecycle across backend services, RESTful APIs and databases within a cross-functional, international team.</p>
+                                <span
+                                    class="absolute -left-[26px] top-1.5 w-2.5 h-2.5 rounded-full bg-term-green"
+                                ></span>
+                                <h5
+                                    class="font-mono text-base font-bold text-term-text"
+                                >
+                                    Senior Software Engineer &amp; Team Lead
+                                </h5>
+                                <p class="text-term-blue text-sm">
+                                    Ringmaster S.r.l
+                                </p>
+                                <p
+                                    class="font-mono text-xs text-term-muted mb-3"
+                                >
+                                    Jun 2022 - Present · Rome (International
+                                    Project)
+                                </p>
+                                <div
+                                    class="text-term-muted text-sm leading-relaxed space-y-2"
+                                >
+                                    <p>
+                                        <strong class="text-term-text"
+                                            >On-Prem to Azure Cloud
+                                            Migration:</strong
+                                        >
+                                        Led the end-to-end migration of a
+                                        large-scale backend to a cloud-native
+                                        microservice architecture on Microsoft
+                                        Azure (Kubernetes/AKS, Helm, Jenkins
+                                        CI/CD), owning the full delivery
+                                        lifecycle across backend services,
+                                        RESTful APIs and databases within a
+                                        cross-functional, international team.
+                                    </p>
                                     <ul class="space-y-1 font-mono text-xs">
-                                        <li><span class="text-term-green">→</span> Real-time data pipelines supporting up to 5,000 concurrent users</li>
-                                        <li><span class="text-term-green">→</span> Reliability validated via performance &amp; integration testing (JUnit, Mockito)</li>
-                                        <li><span class="text-term-green">→</span> Coordinated a zero-issue overnight production go-live + on-call incident response</li>
+                                        <li>
+                                            <span class="text-term-green"
+                                                >→</span
+                                            >
+                                            Real-time data pipelines supporting
+                                            up to 5,000 concurrent users
+                                        </li>
+                                        <li>
+                                            <span class="text-term-green"
+                                                >→</span
+                                            >
+                                            Reliability validated via
+                                            performance &amp; integration
+                                            testing (JUnit, Mockito)
+                                        </li>
+                                        <li>
+                                            <span class="text-term-green"
+                                                >→</span
+                                            >
+                                            Coordinated a zero-issue overnight
+                                            production go-live + on-call
+                                            incident response
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="flex flex-wrap gap-2 mt-3">
-                                    <span class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1">[azure-aks]</span>
-                                    <span class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1">[helm]</span>
-                                    <span class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1">[jenkins]</span>
-                                    <span class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1">[spring-boot]</span>
+                                    <span
+                                        class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1"
+                                        >[azure-aks]</span
+                                    >
+                                    <span
+                                        class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1"
+                                        >[helm]</span
+                                    >
+                                    <span
+                                        class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1"
+                                        >[jenkins]</span
+                                    >
+                                    <span
+                                        class="font-mono text-xs text-term-text border border-term-border rounded px-2 py-1"
+                                        >[spring-boot]</span
+                                    >
                                 </div>
                             </div>
                             <!-- Bytewise -->
                             <div class="relative">
-                                <span class="absolute -left-[26px] top-1.5 w-2.5 h-2.5 rounded-full bg-term-border"></span>
-                                <h5 class="font-mono text-base font-bold text-term-text">Software Engineer Intern</h5>
-                                <p class="text-term-blue text-sm">Bytewise S.r.l</p>
-                                <p class="font-mono text-xs text-term-muted mb-2">Jun 2021 - Nov 2021 · Rome</p>
-                                <p class="text-term-muted text-sm leading-relaxed">Built RESTful API services with Node.js and Express and contributed to React-based front-end interfaces, delivering web applications for data access and visualisation. Managed Linux server environments for deployment and operational monitoring.</p>
+                                <span
+                                    class="absolute -left-[26px] top-1.5 w-2.5 h-2.5 rounded-full bg-term-border"
+                                ></span>
+                                <h5
+                                    class="font-mono text-base font-bold text-term-text"
+                                >
+                                    Software Engineer Intern
+                                </h5>
+                                <p class="text-term-blue text-sm">
+                                    Bytewise S.r.l
+                                </p>
+                                <p
+                                    class="font-mono text-xs text-term-muted mb-2"
+                                >
+                                    Jun 2021 - Nov 2021 · Rome
+                                </p>
+                                <p
+                                    class="text-term-muted text-sm leading-relaxed"
+                                >
+                                    Built RESTful API services with Node.js and
+                                    Express and contributed to React-based
+                                    front-end interfaces, delivering web
+                                    applications for data access and
+                                    visualisation. Managed Linux server
+                                    environments for deployment and operational
+                                    monitoring.
+                                </p>
                             </div>
                             <!-- Linux course -->
                             <div class="relative">
-                                <span class="absolute -left-[26px] top-1.5 w-2.5 h-2.5 rounded-full bg-term-border"></span>
-                                <h5 class="font-mono text-base font-bold text-term-text">Basics Linux Course</h5>
-                                <p class="text-term-blue text-sm">LUG Sapienza</p>
-                                <p class="font-mono text-xs text-term-muted mb-2">Oct 2018 - Nov 2018</p>
-                                <p class="text-term-muted text-sm leading-relaxed">Bash, Linux, VMware.</p>
+                                <span
+                                    class="absolute -left-[26px] top-1.5 w-2.5 h-2.5 rounded-full bg-term-border"
+                                ></span>
+                                <h5
+                                    class="font-mono text-base font-bold text-term-text"
+                                >
+                                    Basics Linux Course
+                                </h5>
+                                <p class="text-term-blue text-sm">
+                                    LUG Sapienza
+                                </p>
+                                <p
+                                    class="font-mono text-xs text-term-muted mb-2"
+                                >
+                                    Oct 2018 - Nov 2018
+                                </p>
+                                <p
+                                    class="text-term-muted text-sm leading-relaxed"
+                                >
+                                    Bash, Linux, VMware.
+                                </p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Education -->
                     <div>
-                        <h4 class="font-mono text-sm text-term-amber mb-6">~/education</h4>
+                        <h4 class="font-mono text-sm text-term-amber mb-6">
+                            ~/education
+                        </h4>
                         <div class="space-y-8 border-l border-term-border pl-6">
                             <div class="relative">
-                                <span class="absolute -left-[26px] top-1.5 w-2.5 h-2.5 rounded-full bg-term-green"></span>
-                                <h5 class="font-mono text-base font-bold text-term-text">M.Sc. Engineering in Computer Science</h5>
-                                <p class="text-term-blue text-sm">Sapienza University</p>
-                                <p class="font-mono text-xs text-term-muted mb-2">Sep 2021 - Oct 2023 · 110 cum laude</p>
-                                <p class="text-term-muted text-sm italic">Thesis: <a href="https://github.com/l-desantis/SLinear-Time-Series-Forecasting" class="text-term-blue hover:underline">SLinear Time Series Forecasting</a></p>
-                                <p class="font-mono text-xs text-term-muted mt-2">Algorithm Design · Distributed Systems · AI/ML · Deep Learning</p>
+                                <span
+                                    class="absolute -left-[26px] top-1.5 w-2.5 h-2.5 rounded-full bg-term-green"
+                                ></span>
+                                <h5
+                                    class="font-mono text-base font-bold text-term-text"
+                                >
+                                    M.Sc. Engineering in Computer Science
+                                </h5>
+                                <p class="text-term-blue text-sm">
+                                    Sapienza University
+                                </p>
+                                <p
+                                    class="font-mono text-xs text-term-muted mb-2"
+                                >
+                                    Sep 2021 - Oct 2023 · 110 cum laude
+                                </p>
+                                <p class="text-term-muted text-sm italic">
+                                    Thesis:
+                                    <a
+                                        href="https://github.com/l-desantis/SLinear-Time-Series-Forecasting"
+                                        class="text-term-blue hover:underline"
+                                        >SLinear Time Series Forecasting</a
+                                    >
+                                </p>
+                                <p
+                                    class="font-mono text-xs text-term-muted mt-2"
+                                >
+                                    Algorithm Design · Distributed Systems ·
+                                    AI/ML · Deep Learning
+                                </p>
                             </div>
                             <div class="relative">
-                                <span class="absolute -left-[26px] top-1.5 w-2.5 h-2.5 rounded-full bg-term-border"></span>
-                                <h5 class="font-mono text-base font-bold text-term-text">B.Sc. Engineering in Computer Science</h5>
-                                <p class="text-term-blue text-sm">Sapienza University</p>
-                                <p class="font-mono text-xs text-term-muted mb-2">Sep 2018 - Oct 2021 · 110 cum laude</p>
-                                <p class="text-term-muted text-sm italic">Thesis on <a href="https://github.com/l-desantis/Tesi-Triennale" class="text-term-blue hover:underline">GitHub</a>.</p>
+                                <span
+                                    class="absolute -left-[26px] top-1.5 w-2.5 h-2.5 rounded-full bg-term-border"
+                                ></span>
+                                <h5
+                                    class="font-mono text-base font-bold text-term-text"
+                                >
+                                    B.Sc. Engineering in Computer Science
+                                </h5>
+                                <p class="text-term-blue text-sm">
+                                    Sapienza University
+                                </p>
+                                <p
+                                    class="font-mono text-xs text-term-muted mb-2"
+                                >
+                                    Sep 2018 - Oct 2021 · 110 cum laude
+                                </p>
+                                <p class="text-term-muted text-sm italic">
+                                    Thesis on
+                                    <a
+                                        href="https://github.com/l-desantis/Tesi-Triennale"
+                                        class="text-term-blue hover:underline"
+                                        >GitHub</a
+                                    >.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -296,25 +661,57 @@
 
                 <!-- Certifications -->
                 <div class="mt-16">
-                    <h4 class="font-mono text-sm text-term-amber mb-6">~/certifications</h4>
+                    <h4 class="font-mono text-sm text-term-amber mb-6">
+                        ~/certifications
+                    </h4>
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="bg-term-panel border border-term-border rounded-md p-5 hover:border-term-green transition">
-                            <i class="fas fa-diagram-project text-term-green mb-3"></i>
-                            <h5 class="font-mono text-sm font-bold text-term-text">Introduction to Model Context Protocol</h5>
-                            <p class="text-term-blue text-xs mt-1">Anthropic Education</p>
-                            <p class="font-mono text-xs text-term-muted mt-2">2026-01</p>
+                        <div
+                            class="bg-term-panel border border-term-border rounded-md p-5 hover:border-term-green transition"
+                        >
+                            <i
+                                class="fas fa-diagram-project text-term-green mb-3"
+                            ></i>
+                            <h5
+                                class="font-mono text-sm font-bold text-term-text"
+                            >
+                                Introduction to Model Context Protocol
+                            </h5>
+                            <p class="text-term-blue text-xs mt-1">
+                                Anthropic Education
+                            </p>
+                            <p class="font-mono text-xs text-term-muted mt-2">
+                                2026-01
+                            </p>
                         </div>
-                        <div class="bg-term-panel border border-term-border rounded-md p-5 hover:border-term-green transition">
+                        <div
+                            class="bg-term-panel border border-term-border rounded-md p-5 hover:border-term-green transition"
+                        >
                             <i class="fas fa-language text-term-green mb-3"></i>
-                            <h5 class="font-mono text-sm font-bold text-term-text">IELTS — English C1</h5>
-                            <p class="text-term-blue text-xs mt-1">British Council</p>
-                            <p class="font-mono text-xs text-term-muted mt-2">2025-05</p>
+                            <h5
+                                class="font-mono text-sm font-bold text-term-text"
+                            >
+                                IELTS — English C1
+                            </h5>
+                            <p class="text-term-blue text-xs mt-1">
+                                British Council
+                            </p>
+                            <p class="font-mono text-xs text-term-muted mt-2">
+                                2025-05
+                            </p>
                         </div>
-                        <div class="bg-term-panel border border-term-border rounded-md p-5 hover:border-term-green transition">
+                        <div
+                            class="bg-term-panel border border-term-border rounded-md p-5 hover:border-term-green transition"
+                        >
                             <i class="fab fa-microsoft text-term-blue mb-3"></i>
-                            <h5 class="font-mono text-sm font-bold text-term-text">Azure Fundamentals (AZ-900)</h5>
+                            <h5
+                                class="font-mono text-sm font-bold text-term-text"
+                            >
+                                Azure Fundamentals (AZ-900)
+                            </h5>
                             <p class="text-term-blue text-xs mt-1">Microsoft</p>
-                            <p class="font-mono text-xs text-term-muted mt-2">2024-03</p>
+                            <p class="font-mono text-xs text-term-muted mt-2">
+                                2024-03
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -324,68 +721,210 @@
         <!-- Projects Section -->
         <section id="projects" class="py-24 border-t border-term-border">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="font-mono text-sm text-term-green mb-2">// projects</p>
-                <h2 class="font-mono text-2xl md:text-3xl font-bold text-term-text mb-12"><span class="text-term-muted">$</span> ls -la ~/projects</h2>
+                <p class="font-mono text-sm text-term-green mb-2">
+                    // projects
+                </p>
+                <h2
+                    class="font-mono text-2xl md:text-3xl font-bold text-term-text mb-12"
+                >
+                    <span class="text-term-muted">$</span> ls -la ~/projects
+                </h2>
                 <div class="grid gap-6 md:grid-cols-2">
-
                     <!-- DevTrend -->
-                    <article class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col">
-                        <p class="font-mono text-xs text-term-muted mb-3">~/projects/dev-trend</p>
-                        <h4 class="font-mono text-lg font-bold text-term-text mb-1">DevTrend</h4>
-                        <p class="font-mono text-xs text-term-green mb-3">// Autonomous Opportunity-Discovery Engine</p>
-                        <p class="text-term-muted text-sm mb-4 leading-relaxed flex-grow">Continuously ingests developer and user signals from Reddit, Hacker News, GitHub and the Play Store, extracts structured pain-points via an <strong class="text-term-text">LLM</strong> pass, and clusters embeddings with <strong class="text-term-text">HDBSCAN</strong> into ranked, lifecycle-tracked candidates surfaced through a Telegram bot. Async FastAPI pipeline, Dockerised, with health-gated GitHub Actions CD and automatic rollback.</p>
+                    <article
+                        class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col"
+                    >
+                        <p class="font-mono text-xs text-term-muted mb-3">
+                            ~/projects/dev-trend
+                        </p>
+                        <h4
+                            class="font-mono text-lg font-bold text-term-text mb-1"
+                        >
+                            DevTrend
+                        </h4>
+                        <p class="font-mono text-xs text-term-green mb-3">
+                            // Autonomous Opportunity-Discovery Engine
+                        </p>
+                        <p
+                            class="text-term-muted text-sm mb-4 leading-relaxed flex-grow"
+                        >
+                            Continuously ingests developer and user signals from
+                            Reddit, Hacker News, GitHub and the Play Store,
+                            extracts structured pain-points via an
+                            <strong class="text-term-text">LLM</strong> pass,
+                            and clusters embeddings with
+                            <strong class="text-term-text">HDBSCAN</strong> into
+                            ranked, lifecycle-tracked candidates surfaced
+                            through a Telegram bot. Async FastAPI pipeline,
+                            Dockerised, with health-gated GitHub Actions CD and
+                            automatic rollback.
+                        </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[python]</span>
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[fastapi]</span>
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[llms]</span>
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[hdbscan]</span>
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[docker]</span>
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[python]</span
+                            >
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[fastapi]</span
+                            >
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[llms]</span
+                            >
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[hdbscan]</span
+                            >
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[docker]</span
+                            >
                         </div>
-                        <a href="https://github.com/l-desantis/dev-trend" target="_blank" class="font-mono text-sm text-term-blue hover:underline">$ git clone →</a>
+                        <a
+                            href="https://github.com/l-desantis/dev-trend"
+                            target="_blank"
+                            class="font-mono text-sm text-term-blue hover:underline"
+                            >$ git clone →</a
+                        >
                     </article>
 
                     <!-- SLinear -->
-                    <article class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col">
-                        <p class="font-mono text-xs text-term-muted mb-3">~/projects/slinear</p>
-                        <h4 class="font-mono text-lg font-bold text-term-text mb-1">SLinear</h4>
-                        <p class="font-mono text-xs text-term-green mb-3">// State-of-the-Art Neural Network</p>
-                        <p class="text-term-muted text-sm mb-4 leading-relaxed flex-grow">Developed a Neural Network for Time Series Forecasting that achieved <strong class="text-term-text">State-of-the-Art (SOTA)</strong> performance on multiple benchmarks, outperforming complex Transformer-based models.</p>
+                    <article
+                        class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col"
+                    >
+                        <p class="font-mono text-xs text-term-muted mb-3">
+                            ~/projects/slinear
+                        </p>
+                        <h4
+                            class="font-mono text-lg font-bold text-term-text mb-1"
+                        >
+                            SLinear
+                        </h4>
+                        <p class="font-mono text-xs text-term-green mb-3">
+                            // State-of-the-Art Neural Network
+                        </p>
+                        <p
+                            class="text-term-muted text-sm mb-4 leading-relaxed flex-grow"
+                        >
+                            Developed a Neural Network for Time Series
+                            Forecasting that achieved
+                            <strong class="text-term-text"
+                                >State-of-the-Art (SOTA)</strong
+                            >
+                            performance on multiple benchmarks, outperforming
+                            complex Transformer-based models.
+                        </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[python]</span>
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[pytorch]</span>
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[sota]</span>
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[python]</span
+                            >
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[pytorch]</span
+                            >
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[sota]</span
+                            >
                         </div>
-                        <a href="https://github.com/l-desantis/SLinear-Time-Series-Forecasting" target="_blank" class="font-mono text-sm text-term-blue hover:underline">$ git clone →</a>
+                        <a
+                            href="https://github.com/l-desantis/SLinear-Time-Series-Forecasting"
+                            target="_blank"
+                            class="font-mono text-sm text-term-blue hover:underline"
+                            >$ git clone →</a
+                        >
                     </article>
 
                     <!-- Travel App (collaborator repo unchanged) -->
-                    <article class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col">
-                        <p class="font-mono text-xs text-term-muted mb-3">~/projects/travel-application</p>
-                        <h4 class="font-mono text-lg font-bold text-term-text mb-1">Travel Application</h4>
-                        <p class="font-mono text-xs text-term-green mb-3">// Android Social Travel App</p>
-                        <p class="text-term-muted text-sm mb-4 leading-relaxed flex-grow">A social travel platform allowing users to create, store, and share itineraries in real-time. Features robust Google Maps integration and Firebase backend.</p>
+                    <article
+                        class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col"
+                    >
+                        <p class="font-mono text-xs text-term-muted mb-3">
+                            ~/projects/travel-application
+                        </p>
+                        <h4
+                            class="font-mono text-lg font-bold text-term-text mb-1"
+                        >
+                            Travel Application
+                        </h4>
+                        <p class="font-mono text-xs text-term-green mb-3">
+                            // Android Social Travel App
+                        </p>
+                        <p
+                            class="text-term-muted text-sm mb-4 leading-relaxed flex-grow"
+                        >
+                            A social travel platform allowing users to create,
+                            store, and share itineraries in real-time. Features
+                            robust Google Maps integration and Firebase backend.
+                        </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[java]</span>
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[android]</span>
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[firebase]</span>
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[java]</span
+                            >
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[android]</span
+                            >
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[firebase]</span
+                            >
                         </div>
-                        <a href="https://github.com/Luca-Gaudenzi/Travel_Application" target="_blank" class="font-mono text-sm text-term-blue hover:underline">$ git clone →</a>
+                        <a
+                            href="https://github.com/Luca-Gaudenzi/Travel_Application"
+                            target="_blank"
+                            class="font-mono text-sm text-term-blue hover:underline"
+                            >$ git clone →</a
+                        >
                     </article>
 
                     <!-- Speed Detector -->
-                    <article class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col">
-                        <p class="font-mono text-xs text-term-muted mb-3">~/projects/speed-detector-manager</p>
-                        <h4 class="font-mono text-lg font-bold text-term-text mb-1">Speed Detector Manager</h4>
-                        <p class="font-mono text-xs text-term-green mb-3">// Microservice Framework</p>
-                        <p class="text-term-muted text-sm mb-4 leading-relaxed flex-grow">Microservice framework for receiving and analyzing traffic fines. Built on Spring Boot using Microservices architecture patterns and ActiveMQ as a message broker.</p>
+                    <article
+                        class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col"
+                    >
+                        <p class="font-mono text-xs text-term-muted mb-3">
+                            ~/projects/speed-detector-manager
+                        </p>
+                        <h4
+                            class="font-mono text-lg font-bold text-term-text mb-1"
+                        >
+                            Speed Detector Manager
+                        </h4>
+                        <p class="font-mono text-xs text-term-green mb-3">
+                            // Microservice Framework
+                        </p>
+                        <p
+                            class="text-term-muted text-sm mb-4 leading-relaxed flex-grow"
+                        >
+                            Microservice framework for receiving and analyzing
+                            traffic fines. Built on Spring Boot using
+                            Microservices architecture patterns and ActiveMQ as
+                            a message broker.
+                        </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[spring]</span>
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[docker]</span>
-                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[activemq]</span>
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[spring]</span
+                            >
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[docker]</span
+                            >
+                            <span
+                                class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1"
+                                >[activemq]</span
+                            >
                         </div>
-                        <a href="https://github.com/l-desantis/SpeedDetectorManager" target="_blank" class="font-mono text-sm text-term-blue hover:underline">$ git clone →</a>
+                        <a
+                            href="https://github.com/l-desantis/SpeedDetectorManager"
+                            target="_blank"
+                            class="font-mono text-sm text-term-blue hover:underline"
+                            >$ git clone →</a
+                        >
                     </article>
-
                 </div>
             </div>
         </section>
@@ -394,38 +933,127 @@
         <section id="contact" class="py-24 border-t border-term-border">
             <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
                 <p class="font-mono text-sm text-term-green mb-2">// contact</p>
-                <h2 class="font-mono text-2xl md:text-3xl font-bold text-term-text mb-10"><span class="text-term-muted">$</span> ./contact.sh</h2>
-                <div class="bg-term-panel border border-term-border rounded-md p-6 md:p-8">
-                    <form action="https://api.web3forms.com/submit" method="POST" class="space-y-5" id="contactForm">
-                        <input type="hidden" name="access_key" value="aae3ef4f-ffd4-46c0-9234-3ec596d9db88" />
-                        <input type="hidden" name="subject" value="New message from your portfolio" />
-                        <input type="hidden" name="from_name" value="Portfolio Contact Form" />
-                        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+                <h2
+                    class="font-mono text-2xl md:text-3xl font-bold text-term-text mb-10"
+                >
+                    <span class="text-term-muted">$</span> ./contact.sh
+                </h2>
+                <div
+                    class="bg-term-panel border border-term-border rounded-md p-6 md:p-8"
+                >
+                    <form
+                        action="https://api.web3forms.com/submit"
+                        method="POST"
+                        class="space-y-5"
+                        id="contactForm"
+                    >
+                        <input
+                            type="hidden"
+                            name="access_key"
+                            value="aae3ef4f-ffd4-46c0-9234-3ec596d9db88"
+                        />
+                        <input
+                            type="hidden"
+                            name="subject"
+                            value="New message from your portfolio"
+                        />
+                        <input
+                            type="hidden"
+                            name="from_name"
+                            value="Portfolio Contact Form"
+                        />
+                        <input
+                            type="checkbox"
+                            name="botcheck"
+                            class="hidden"
+                            style="display: none"
+                            tabindex="-1"
+                            autocomplete="off"
+                        />
                         <div class="grid md:grid-cols-2 gap-5">
                             <div>
-                                <label for="name" class="block font-mono text-xs text-term-muted mb-2">name</label>
-                                <input type="text" id="name" name="name" required class="w-full px-3 py-2.5 rounded bg-term-bg border border-term-border text-term-text font-mono text-sm focus:border-term-green focus:ring-1 focus:ring-term-green outline-none transition" />
+                                <label
+                                    for="name"
+                                    class="block font-mono text-xs text-term-muted mb-2"
+                                    >name</label
+                                >
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    required
+                                    class="w-full px-3 py-2.5 rounded bg-term-bg border border-term-border text-term-text font-mono text-sm focus:border-term-green focus:ring-1 focus:ring-term-green outline-none transition"
+                                />
                             </div>
                             <div>
-                                <label for="email" class="block font-mono text-xs text-term-muted mb-2">email</label>
-                                <input type="email" id="email" name="email" required class="w-full px-3 py-2.5 rounded bg-term-bg border border-term-border text-term-text font-mono text-sm focus:border-term-green focus:ring-1 focus:ring-term-green outline-none transition" />
+                                <label
+                                    for="email"
+                                    class="block font-mono text-xs text-term-muted mb-2"
+                                    >email</label
+                                >
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    required
+                                    class="w-full px-3 py-2.5 rounded bg-term-bg border border-term-border text-term-text font-mono text-sm focus:border-term-green focus:ring-1 focus:ring-term-green outline-none transition"
+                                />
                             </div>
                         </div>
                         <div>
-                            <label for="message" class="block font-mono text-xs text-term-muted mb-2">message</label>
-                            <textarea id="message" name="message" rows="4" required class="w-full px-3 py-2.5 rounded bg-term-bg border border-term-border text-term-text font-mono text-sm focus:border-term-green focus:ring-1 focus:ring-term-green outline-none transition"></textarea>
+                            <label
+                                for="message"
+                                class="block font-mono text-xs text-term-muted mb-2"
+                                >message</label
+                            >
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="4"
+                                required
+                                class="w-full px-3 py-2.5 rounded bg-term-bg border border-term-border text-term-text font-mono text-sm focus:border-term-green focus:ring-1 focus:ring-term-green outline-none transition"
+                            ></textarea>
                         </div>
-                        <button type="submit" class="w-full px-5 py-3 bg-term-green text-term-bg font-mono text-sm font-medium rounded hover:bg-term-green/90 transition active:scale-[0.99] flex justify-center items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
-                            $ send-message <i class="fas fa-paper-plane text-xs"></i>
+                        <button
+                            type="submit"
+                            class="w-full px-5 py-3 bg-term-green text-term-bg font-mono text-sm font-medium rounded hover:bg-term-green/90 transition active:scale-[0.99] flex justify-center items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                        >
+                            $ send-message
+                            <i class="fas fa-paper-plane text-xs"></i>
                         </button>
-                        <p id="formStatus" class="font-mono text-sm text-center hidden" role="status" aria-live="polite"></p>
+                        <p
+                            id="formStatus"
+                            class="font-mono text-sm text-center hidden"
+                            role="status"
+                            aria-live="polite"
+                        ></p>
                     </form>
-                    <div class="mt-8 pt-6 border-t border-term-border flex flex-col items-center gap-3 font-mono text-sm text-term-muted">
-                        <a href="mailto:desantis.lorenzo.271@gmail.com" class="hover:text-term-green transition">desantis.lorenzo.271@gmail.com</a>
-                        <a href="tel:+393290347747" class="hover:text-term-green transition">+39 329 034 7747</a>
+                    <div
+                        class="mt-8 pt-6 border-t border-term-border flex flex-col items-center gap-3 font-mono text-sm text-term-muted"
+                    >
+                        <a
+                            href="mailto:desantis.lorenzo.271@gmail.com"
+                            class="hover:text-term-green transition"
+                            >desantis.lorenzo.271@gmail.com</a
+                        >
+                        <a
+                            href="tel:+393290347747"
+                            class="hover:text-term-green transition"
+                            >+39 329 034 7747</a
+                        >
                         <div class="flex gap-5 mt-1 text-lg">
-                            <a href="https://github.com/l-desantis" target="_blank" class="hover:text-term-green transition"><i class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/desantis-lorenzo" target="_blank" class="hover:text-term-green transition"><i class="fab fa-linkedin"></i></a>
+                            <a
+                                href="https://github.com/l-desantis"
+                                target="_blank"
+                                class="hover:text-term-green transition"
+                                ><i class="fab fa-github"></i
+                            ></a>
+                            <a
+                                href="https://www.linkedin.com/in/desantis-lorenzo"
+                                target="_blank"
+                                class="hover:text-term-green transition"
+                                ><i class="fab fa-linkedin"></i
+                            ></a>
                         </div>
                     </div>
                 </div>
@@ -434,9 +1062,14 @@
 
         <!-- Footer -->
         <footer class="border-t border-term-border py-10">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-3 font-mono text-sm text-term-muted">
+            <div
+                class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-3 font-mono text-sm text-term-muted"
+            >
                 <span class="text-term-green">lorenzo@portfolio:~$</span>
-                <span>© <span id="year"></span> Lorenzo De Santis · built from scratch</span>
+                <span
+                    >© <span id="year"></span> Lorenzo De Santis · built from
+                    scratch</span
+                >
             </div>
         </footer>
 
@@ -501,7 +1134,8 @@
                         submitBtn.classList.add("bg-green-600");
                         status.textContent =
                             "Thanks! Your message has been sent — I'll get back to you soon.";
-                        status.className = "font-mono text-sm text-center text-green-500";
+                        status.className =
+                            "font-mono text-sm text-center text-green-500";
                     } else {
                         throw new Error(data.message || "Submission failed");
                     }
@@ -512,12 +1146,16 @@
                     submitBtn.classList.add("bg-red-600");
                     status.textContent =
                         "Something went wrong. Please email me directly at desantis.lorenzo.271@gmail.com.";
-                    status.className = "font-mono text-sm text-center text-red-500";
+                    status.className =
+                        "font-mono text-sm text-center text-red-500";
                 } finally {
                     setTimeout(() => {
                         submitBtn.disabled = false;
                         submitBtn.innerHTML = originalText;
-                        submitBtn.classList.remove("bg-green-600", "bg-red-600");
+                        submitBtn.classList.remove(
+                            "bg-green-600",
+                            "bg-red-600",
+                        );
                         submitBtn.classList.add("bg-term-green");
                     }, 4000);
                 }
