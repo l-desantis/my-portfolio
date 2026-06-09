@@ -319,205 +319,70 @@
         </section>
 
         <!-- Projects Section -->
-        <section
-            id="projects"
-            class="py-24 bg-white border-t border-neutral-100"
-        >
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-                    <h2
-                        class="text-sm font-bold text-primary tracking-widest uppercase mb-3"
-                    >
-                        Portfolio
-                    </h2>
-                    <h3 class="text-3xl md:text-4xl font-bold text-neutral-900">
-                        Selected Projects
-                    </h3>
-                </div>
+        <section id="projects" class="py-24 border-t border-term-border">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="font-mono text-sm text-term-green mb-2">// projects</p>
+                <h2 class="font-mono text-2xl md:text-3xl font-bold text-term-text mb-12"><span class="text-term-muted">$</span> ls -la ~/projects</h2>
+                <div class="grid gap-6 md:grid-cols-2">
 
-                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    <!-- Project 1: SLinear -->
-                    <article
-                        class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-neutral-100 fade-in flex flex-col h-full"
-                    >
-                        <div class="p-6 flex flex-col h-full">
-                            <div class="mb-4">
-                                <div
-                                    class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4"
-                                >
-                                    <i class="fas fa-brain text-xl"></i>
-                                </div>
-                                <h4
-                                    class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition"
-                                >
-                                    SLinear
-                                </h4>
-                                <p
-                                    class="text-sm font-semibold text-neutral-500 mb-3"
-                                >
-                                    State-of-the-Art Neural Network
-                                </p>
-                                <p
-                                    class="text-neutral-600 text-sm mb-4 line-clamp-4"
-                                >
-                                    Developed a Neural Network for Time Series
-                                    Forecasting that achieved
-                                    <strong>State-of-the-Art (SOTA)</strong>
-                                    performance on multiple benchmarks,
-                                    outperforming complex Transformer-based
-                                    models.
-                                </p>
-                            </div>
-                            <div class="mt-auto">
-                                <div class="flex flex-wrap gap-2 mb-6">
-                                    <span
-                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
-                                        >Python</span
-                                    >
-                                    <span
-                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
-                                        >PyTorch</span
-                                    >
-                                    <span
-                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
-                                        >SOTA</span
-                                    >
-                                </div>
-                                <a
-                                    href="https://github.com/whoami-Lory271/SLinear-Time-Series-Forecasting"
-                                    target="_blank"
-                                    class="inline-flex items-center text-sm font-medium text-primary hover:text-primary-light"
-                                >
-                                    View Source
-                                    <i
-                                        class="fas fa-arrow-right ml-2 text-xs"
-                                    ></i>
-                                </a>
-                            </div>
+                    <!-- DevTrend -->
+                    <article class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col">
+                        <p class="font-mono text-xs text-term-muted mb-3">~/projects/dev-trend</p>
+                        <h4 class="font-mono text-lg font-bold text-term-text mb-1">DevTrend</h4>
+                        <p class="font-mono text-xs text-term-green mb-3">// Autonomous Opportunity-Discovery Engine</p>
+                        <p class="text-term-muted text-sm mb-4 leading-relaxed flex-grow">Continuously ingests developer and user signals from Reddit, Hacker News, GitHub and the Play Store, extracts structured pain-points via an <strong class="text-term-text">LLM</strong> pass, and clusters embeddings with <strong class="text-term-text">HDBSCAN</strong> into ranked, lifecycle-tracked candidates surfaced through a Telegram bot. Async FastAPI pipeline, Dockerised, with health-gated GitHub Actions CD and automatic rollback.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[python]</span>
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[fastapi]</span>
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[llms]</span>
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[hdbscan]</span>
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[docker]</span>
                         </div>
+                        <a href="https://github.com/l-desantis/dev-trend" target="_blank" class="font-mono text-sm text-term-blue hover:underline">$ git clone →</a>
                     </article>
 
-                    <!-- Project 2: Travel App -->
-                    <article
-                        class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-neutral-100 fade-in delay-100 flex flex-col h-full"
-                    >
-                        <div class="p-6 flex flex-col h-full">
-                            <div class="mb-4">
-                                <div
-                                    class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4"
-                                >
-                                    <i
-                                        class="fas fa-plane-departure text-xl"
-                                    ></i>
-                                </div>
-                                <h4
-                                    class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition"
-                                >
-                                    Travel Application
-                                </h4>
-                                <p
-                                    class="text-sm font-semibold text-neutral-500 mb-3"
-                                >
-                                    Android Social Travel App
-                                </p>
-                                <p
-                                    class="text-neutral-600 text-sm mb-4 line-clamp-4"
-                                >
-                                    A social travel platform allowing users to
-                                    create, store, and share itineraries in
-                                    real-time. Features robust Google Maps
-                                    integration and Firebase backend.
-                                </p>
-                            </div>
-                            <div class="mt-auto">
-                                <div class="flex flex-wrap gap-2 mb-6">
-                                    <span
-                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
-                                        >Java</span
-                                    >
-                                    <span
-                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
-                                        >Android Studio</span
-                                    >
-                                    <span
-                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
-                                        >Firebase</span
-                                    >
-                                </div>
-                                <a
-                                    href="https://github.com/Luca-Gaudenzi/Travel_Application"
-                                    target="_blank"
-                                    class="inline-flex items-center text-sm font-medium text-primary hover:text-primary-light"
-                                >
-                                    View Source
-                                    <i
-                                        class="fas fa-arrow-right ml-2 text-xs"
-                                    ></i>
-                                </a>
-                            </div>
+                    <!-- SLinear -->
+                    <article class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col">
+                        <p class="font-mono text-xs text-term-muted mb-3">~/projects/slinear</p>
+                        <h4 class="font-mono text-lg font-bold text-term-text mb-1">SLinear</h4>
+                        <p class="font-mono text-xs text-term-green mb-3">// State-of-the-Art Neural Network</p>
+                        <p class="text-term-muted text-sm mb-4 leading-relaxed flex-grow">Developed a Neural Network for Time Series Forecasting that achieved <strong class="text-term-text">State-of-the-Art (SOTA)</strong> performance on multiple benchmarks, outperforming complex Transformer-based models.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[python]</span>
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[pytorch]</span>
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[sota]</span>
                         </div>
+                        <a href="https://github.com/l-desantis/SLinear-Time-Series-Forecasting" target="_blank" class="font-mono text-sm text-term-blue hover:underline">$ git clone →</a>
                     </article>
 
-                    <!-- Project 3: Speed Detector -->
-                    <article
-                        class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-neutral-100 fade-in delay-200 flex flex-col h-full"
-                    >
-                        <div class="p-6 flex flex-col h-full">
-                            <div class="mb-4">
-                                <div
-                                    class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4"
-                                >
-                                    <i
-                                        class="fas fa-tachometer-alt text-xl"
-                                    ></i>
-                                </div>
-                                <h4
-                                    class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition"
-                                >
-                                    Speed Detector Manager
-                                </h4>
-                                <p
-                                    class="text-sm font-semibold text-neutral-500 mb-3"
-                                >
-                                    Microservice Framework
-                                </p>
-                                <p
-                                    class="text-neutral-600 text-sm mb-4 line-clamp-4"
-                                >
-                                    Microservice framework for receiving and
-                                    analyzing traffic fines. Built on Spring
-                                    Boot using Microservices architecture
-                                    patterns and ActiveMQ as a message broker.
-                                </p>
-                            </div>
-                            <div class="mt-auto">
-                                <div class="flex flex-wrap gap-2 mb-6">
-                                    <span
-                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
-                                        >Spring</span
-                                    >
-                                    <span
-                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
-                                        >Docker</span
-                                    >
-                                    <span
-                                        class="text-xs font-medium px-2 py-1 bg-neutral-100 text-neutral-600 rounded"
-                                        >ActiveMQ</span
-                                    >
-                                </div>
-                                <a
-                                    href="https://github.com/whoami-Lory271/SpeedDetectorManager"
-                                    target="_blank"
-                                    class="inline-flex items-center text-sm font-medium text-primary hover:text-primary-light"
-                                >
-                                    View Source
-                                    <i
-                                        class="fas fa-arrow-right ml-2 text-xs"
-                                    ></i>
-                                </a>
-                            </div>
+                    <!-- Travel App (collaborator repo unchanged) -->
+                    <article class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col">
+                        <p class="font-mono text-xs text-term-muted mb-3">~/projects/travel-application</p>
+                        <h4 class="font-mono text-lg font-bold text-term-text mb-1">Travel Application</h4>
+                        <p class="font-mono text-xs text-term-green mb-3">// Android Social Travel App</p>
+                        <p class="text-term-muted text-sm mb-4 leading-relaxed flex-grow">A social travel platform allowing users to create, store, and share itineraries in real-time. Features robust Google Maps integration and Firebase backend.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[java]</span>
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[android]</span>
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[firebase]</span>
                         </div>
+                        <a href="https://github.com/Luca-Gaudenzi/Travel_Application" target="_blank" class="font-mono text-sm text-term-blue hover:underline">$ git clone →</a>
                     </article>
+
+                    <!-- Speed Detector -->
+                    <article class="bg-term-panel border border-term-border rounded-md p-6 hover:border-term-green transition flex flex-col">
+                        <p class="font-mono text-xs text-term-muted mb-3">~/projects/speed-detector-manager</p>
+                        <h4 class="font-mono text-lg font-bold text-term-text mb-1">Speed Detector Manager</h4>
+                        <p class="font-mono text-xs text-term-green mb-3">// Microservice Framework</p>
+                        <p class="text-term-muted text-sm mb-4 leading-relaxed flex-grow">Microservice framework for receiving and analyzing traffic fines. Built on Spring Boot using Microservices architecture patterns and ActiveMQ as a message broker.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[spring]</span>
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[docker]</span>
+                            <span class="font-mono text-xs text-term-muted border border-term-border rounded px-2 py-1">[activemq]</span>
+                        </div>
+                        <a href="https://github.com/l-desantis/SpeedDetectorManager" target="_blank" class="font-mono text-sm text-term-blue hover:underline">$ git clone →</a>
+                    </article>
+
                 </div>
             </div>
         </section>
